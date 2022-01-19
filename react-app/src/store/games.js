@@ -36,13 +36,13 @@ export const createGame = (game_number) => async (dispatch) => {
 export default function gameReducer(state = {}, action) {
   switch (action.type) {
     case ADD_GAME: {
+      console.log("action =>", action);
+      console.log("payload =>", action.payload);
       const newState = { ...state, [action.payload.id]: action.payload };
       return newState;
     }
     case LOAD_GAMES: {
       const newState = { ...state };
-      console.log("action =>", action);
-      console.log("payload =>", action.payload);
       action.payload.games?.forEach((game) => newState[game.id] = game)
       return newState;
     }

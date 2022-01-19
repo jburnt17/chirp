@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createGame, getGames } from "../../store/games";
-import { getTeams } from "../../store/teams";
+import { getTodaysGames } from "../../store/teams";
 import "./HomePage.css";
 
 function HomePage() {
@@ -15,33 +15,31 @@ function HomePage() {
 
   const [gameOption, setGameOption] = useState(0);
 
-  console.log('Games Today ====>', gamesToday);
-
-  useEffect(() => {
-    dispatch(getGames());
-    dispatch(getTeams());
-  }, [dispatch]);
+  console.log("Games Today ====>", gamesToday);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(gameOption);
+    console.log("Game Option =>", gameOption);
     dispatch(createGame(gameOption));
   };
+
+  useEffect(() => [dispatch(getTodaysGames())], []);
+
+  useEffect(() => {
+    dispatch(getGames());
+    dispatch(getTodaysGames());
+  }, [dispatch]);
 
   return (
     <div>
       <div>
-        <form
-          onSubmit={(e) => handleSubmit(e)}
-          onChange={(e) => setGameOption(e.target.value)}
-        >
-          <select>
+        <form onSubmit={(e) => handleSubmit(e)} onChange={(e) => setGameOption(e.target.value)}>
+          <select >
             {gamesToday.map((gameToday, i) => (
-              <>
-                <option value={i}>
-                  {gameToday.teams.away.team.name} vs {gameToday.teams.home.team.name}
-                </option>
-              </>
+              <option value={i}>
+                {gameToday.teams.away.team.name} vs{" "}
+                {gameToday.teams.home.team.name}
+              </option>
             ))}
           </select>
           <button>Submit</button>

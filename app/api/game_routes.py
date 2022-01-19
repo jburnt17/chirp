@@ -16,9 +16,11 @@ def load_games():
 def add_game():
   form = CreateGameForm()
   form['csrf_token'].data = request.cookies['csrf_token']
+  print('testing =>', form.data['game_number'])
 
   if form.validate_on_submit():
     game_number = form.data['game_number']
+    print('Game Number ================>', game_number)
 
     new_game = Game(
       user_id = current_user.id,

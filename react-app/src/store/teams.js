@@ -5,7 +5,7 @@ const loadGames = (games) => ({
   payload: games,
 });
 
-export const getTeams = () => async (dispatch) => {
+export const getTodaysGames = () => async (dispatch) => {
   const response = await fetch('https://statsapi.web.nhl.com/api/v1/schedule')
   const games = await response.json();
   dispatch(loadGames(games))
