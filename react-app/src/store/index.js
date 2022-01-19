@@ -1,11 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import gameReducer from './games';
 import session from './session';
-import gameReducer from './teams';
+import gamesTodayReducer from './teams';
 
 const rootReducer = combineReducers({
   session,
-  games: gameReducer,
+  gamesToday: gamesTodayReducer,
+  gameLobbies: gameReducer,
 });
 
 

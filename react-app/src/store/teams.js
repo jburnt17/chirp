@@ -11,7 +11,7 @@ export const getTeams = () => async (dispatch) => {
   dispatch(loadGames(games))
 }
 
-export default function gameReducer(state = {}, action) {
+export default function gamesTodayReducer(state = {}, action) {
   switch (action.type) {
     case LOAD_GAMES: {
       console.log(action.payload.dates[0].games)
