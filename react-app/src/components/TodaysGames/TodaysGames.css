@@ -1,0 +1,30 @@
+.todays-games-container {
+  position: sticky;
+  top: 5rem;
+  height: fit-content;
+  background-color: rgba(226, 226, 226, 0.808);
+  border-radius: 1rem;
+  padding: 1rem 0rem;
+}
+.single-game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+.single-game > div {
+  font-size: .8rem;
+  font-weight: bold;
+}
+.todays-game-teams > img {
+  margin: .25rem 1rem;
+}
+.todays-games-container > p {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: rgb(48, 48, 48);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+  text-align: center;
+  padding-bottom: 1rem;
+}

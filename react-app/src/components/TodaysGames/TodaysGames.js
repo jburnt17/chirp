@@ -1,35 +1,58 @@
 import React from "react";
+import "./TodaysGames.css";
 
-
-function TodaysGames({gamesToday}) {
-
+function TodaysGames({ gamesToday }) {
   return (
-    <div>
-      {gamesToday.map((gameToday) => (
-        <div className="schedule-container">
-          <div className="single-game">
-            {/* <div className="game-date">
-              {new Date(gameToday.gameDate).toLocaleString().split(",")[1]}
-            </div> */}
-            <span>
-              <img
-                width={64}
-                src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gameToday.teams.away.team.id}.svg
+    <>
+      <div className="todays-games-container">
+    <p>Todays Games</p>
+        {gamesToday.map((gameToday) => (
+          <div>
+            <div className="single-game">
+              <span className="todays-game-teams">
+                {gameToday.teams.away.team.name !== "Seattle Kraken" ? (
+                  <img
+                    width={48}
+                    src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gameToday.teams.away.team.id}.svg
 `}
-              />
-            </span>
-            {gameToday.teams.away.team.name} vs {gameToday.teams.home.team.name}
-            <span>
-              <img
-                width={64}
-                src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gameToday.teams.home.team.id}.svg
+                  />
+                ) : (
+                  <img
+                    width={24}
+                    src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gameToday.teams.away.team.id}.svg
 `}
-              />
-            </span>
+                  />
+                )}
+              </span>
+              <div>
+                {new Date(gameToday.gameDate)
+                  .toLocaleString()
+                  .split(",")[1]
+                  .split(" ")[1]
+                  .split(":")
+                  .slice(0, 2)
+                  .join(":") + " PM EST"}
+              </div>
+              <span className="todays-game-teams">
+                {gameToday.teams.home.team.name !== "Seattle Kraken" ? (
+                  <img
+                    width={48}
+                    src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gameToday.teams.home.team.id}.svg
+`}
+                  />
+                ) : (
+                  <img
+                    width={24}
+                    src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gameToday.teams.home.team.id}.svg
+`}
+                  />
+                )}
+              </span>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
 

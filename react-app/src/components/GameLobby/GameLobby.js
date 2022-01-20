@@ -33,24 +33,40 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser }) {
               </div> */}
               <div className="lobby-info">
               <span>
+              {gamesToday[gameLobby.game_number]?.teams.away.team.name !== "Seattle Kraken" ? (
                 <img
-                  className="image-left"
-                  src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${
-                    gamesToday[gameLobby.game_number]?.teams.away.team.id
-                  }.svg
+                  width={96}
+                  className="image-right"
+                  src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gamesToday[gameLobby.game_number]?.teams.away.team.id}.svg
 `}
                 />
+              ) : (
+                <img
+                  width={58}
+                  className="image-right"
+                  src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gamesToday[gameLobby.game_number]?.teams.away.team.id}.svg
+`}
+                />
+              )}
               </span>
               {gamesToday[gameLobby.game_number]?.teams.away.team.name} vs{" "}
               {gamesToday[gameLobby.game_number]?.teams.home.team.name}
               <span>
+              {gamesToday[gameLobby.game_number]?.teams.home.team.name !== "Seattle Kraken" ? (
                 <img
+                  width={96}
                   className="image-right"
-                  src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${
-                    gamesToday[gameLobby.game_number]?.teams.home.team.id
-                  }.svg
+                  src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gamesToday[gameLobby.game_number]?.teams.home.team.id}.svg
 `}
                 />
+              ) : (
+                <img
+                  width={58}
+                  className="image-right"
+                  src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gamesToday[gameLobby.game_number]?.teams.home.team.id}.svg
+`}
+                />
+              )}
               </span>
               </div>
               {/* TODO!!! FIX BUTTON ONCLICK SHOWING ALL DELETE BUTTONS */}
