@@ -6,7 +6,8 @@ const loadGames = (games) => ({
 });
 
 export const getTodaysGames = () => async (dispatch) => {
-  const response = await fetch('https://statsapi.web.nhl.com/api/v1/schedule')
+  const date = new Date().toISOString().split('-')
+  const response = await fetch(`https://statsapi.web.nhl.com/api/v1/schedule?date=${date[0]}-${date[1]}-${date[2].slice(0, 2)}`)
   const games = await response.json();
   dispatch(loadGames(games))
 }
