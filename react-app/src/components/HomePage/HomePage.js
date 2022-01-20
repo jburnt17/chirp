@@ -33,6 +33,9 @@ function HomePage() {
           <NavBar />
         </div>
         <div className="home-page-middle">
+          <div className="middle-nav">
+            <div onClick={() => document.documentElement.scrollTop = 0}>Home</div>
+          </div>
           <CreateGameLobby gamesToday={gamesToday} />
           <GameLobby
             gameLobbies={gameLobbies}

@@ -9,15 +9,19 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser }) {
   const [showOptions, setShowOptions] = useState(false);
 
   const handleDelete = (e) => {
-    const lobbyId = e.target.className.split('-')[1]
-    console.log(lobbyId)
-    dispatch(removeGame(lobbyId))
+    const lobbyId = e.target.className.split("-")[1];
+    console.log(lobbyId);
+    dispatch(removeGame(lobbyId));
   };
 
   return (
     <div>
       {gameLobbies.map((gameLobby, i) => (
-        <div>
+        <div className="game-lobby">
+          <div className="game-lobby-user-info">
+            <img src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg"/>
+            <p>User</p>
+          </div>
           <div className="schedule-container">
             <div className="game-lobby-con">
               {/* <div className="game-date">
@@ -27,9 +31,10 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser }) {
                     .split(",")[1]
                 }
               </div> */}
+              <div className="lobby-info">
               <span>
                 <img
-                  width={64}
+                  className="image-left"
                   src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${
                     gamesToday[gameLobby.game_number]?.teams.away.team.id
                   }.svg
@@ -40,17 +45,23 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser }) {
               {gamesToday[gameLobby.game_number]?.teams.home.team.name}
               <span>
                 <img
-                  width={64}
+                  className="image-right"
                   src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${
                     gamesToday[gameLobby.game_number]?.teams.home.team.id
                   }.svg
 `}
                 />
               </span>
+              </div>
               {/* TODO!!! FIX BUTTON ONCLICK SHOWING ALL DELETE BUTTONS */}
               {showOptions && (
                 <div>
-                  <button className={`button-${gameLobby.id}`} onClick={(e) => handleDelete(e)}>Delete</button>
+                  <button
+                    className={`button-${gameLobby.id}`}
+                    onClick={(e) => handleDelete(e)}
+                  >
+                    Delete
+                  </button>
                 </div>
               )}
               {sessionUser.id === gameLobby.user_id && (
@@ -58,6 +69,7 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser }) {
                   width={24}
                   cursor={"pointer"}
                   className={`lobby-option-icon-${i}`}
+                  id="lobby-options"
                   onClick={() => setShowOptions(!showOptions)}
                 />
               )}

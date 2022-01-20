@@ -1,3 +1,45 @@
 .game-lobby-con {
-  background-color: rgb(70, 82, 79);
+  border-bottom: 1px solid rgba(59, 59, 59, 0.2);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: fit-content;
+  position: relative;
+  margin-top: 1rem;
+}
+#lobby-options {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: -.8rem .8rem;
+}
+.game-lobby-user-info {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  margin: 0rem 1rem;
+}
+.game-lobby-user-info > img {
+  height: 32px;
+  height: 32px;
+  margin-right: .25rem;
+}
+.game-lobby-user-info > p {
+  font-size: .9rem;
+  font-weight: bold;
+  margin-top: .25rem;
+}
+.lobby-info {
+  display: flex;
+  align-items: center;
+  margin: 5rem 0rem;
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 0rem 2rem;
+}
+.image-left {
+  width: 96px;
+}
+.image-right {
+  width: 96px;
 }
