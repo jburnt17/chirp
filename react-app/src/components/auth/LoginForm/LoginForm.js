@@ -52,6 +52,7 @@ const LoginForm = () => {
               type="text"
               value={email}
               onChange={updateEmail}
+              required={true}
             />
             <label className="login-label" htmlFor="email">
               Email
@@ -64,6 +65,7 @@ const LoginForm = () => {
               type="password"
               value={password}
               onChange={updatePassword}
+              required={true}
             />
             <label className="login-label" htmlFor="password">
               Password

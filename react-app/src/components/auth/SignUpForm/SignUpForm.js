@@ -63,6 +63,7 @@ const SignUpForm = () => {
               name="username"
               onChange={updateUsername}
               value={username}
+              required={true}
             ></input>
             <label className="login-label">Username</label>
           </div>
@@ -73,6 +74,7 @@ const SignUpForm = () => {
               name="email"
               onChange={updateEmail}
               value={email}
+              required={true}
             ></input>
             <label className="login-label">Email</label>
           </div>
@@ -83,6 +85,7 @@ const SignUpForm = () => {
               name="password"
               onChange={updatePassword}
               value={password}
+              required={true}
             ></input>
             <label className="login-label">Password</label>
           </div>
