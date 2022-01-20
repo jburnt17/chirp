@@ -23,6 +23,7 @@
   height: 32px;
   height: 32px;
   margin-right: .25rem;
+  opacity: 70%;
 }
 .game-lobby-user-info > p {
   font-size: .9rem;

@@ -1,0 +1,67 @@
+.game-lobby-form-con {
+  width: 100%;
+  border-bottom: 1px solid rgba(59, 59, 59, 0.2);
+}
+.game-lobby-form-header {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+.game-lobby-form-header > img {
+  width: 64px;
+  opacity: 70%;
+  margin-right: .5rem;
+}
+.game-lobby-form-header > p {
+  font-size: 1.25rem;
+  font-weight: 100;
+  color: rgba(2, 2, 2, 0.815);
+}
+.game-lobby-form {
+  margin: 1rem 1.5rem;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.game-lobby-form > div > select {
+  border: none;
+  background-color: white;
+  width: 350px;
+  height: 2.5rem;
+  border-radius: 2rem;
+  padding-left: 1rem;
+  appearance: none;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.select-wrapper {
+  position: relative;
+}
+.select-arrow {
+  width: 24px;
+  height: 24px;
+  color: rgba(58, 58, 58, 0.781);
+  position: absolute;
+  right: 5px;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.game-lobby-form-button {
+  border: none;
+  background-color: rgb(66, 142, 255);
+  color: white;
+  height: 2.5rem;
+  width: 100px;
+  border-radius: 3rem;
+  cursor: pointer;
+  transition: .1s all ease-in;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+.game-lobby-form-button:hover {
+  background-color: rgb(66, 142, 255);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
