@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { createGame, getGames } from "../../store/games";
 import { getTodaysGames } from "../../store/teams";
 import GameLobby from "../GameLobby/GameLobby";
+import NavBar from "../NavBar";
 import TodaysGames from "../TodaysGames/TodaysGames";
 import "./HomePage.css";
 
@@ -33,6 +34,7 @@ function HomePage() {
 
   return (
     <div>
+      <NavBar />
       <div>
         <form
           onSubmit={(e) => handleSubmit(e)}
