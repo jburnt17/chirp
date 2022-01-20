@@ -16,6 +16,7 @@
 /* MIDDLE  */
 .home-page-middle {
   grid-column: span 2;
+  z-index: -1;
 }
 .middle-nav {
   position: sticky;
