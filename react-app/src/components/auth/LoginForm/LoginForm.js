@@ -33,9 +33,7 @@ const LoginForm = () => {
   return (
     <div>
       <div className="left-login">
-        <img src="https://github.com/jburnt17/chirp/blob/main/react-app/public/pngfind.com-stanley-cup-png-693548.png?raw=true"/>
-        <img src="https://github.com/jburnt17/chirp/blob/main/react-app/public/toppng.com-black-hawk-chicago-blackhawks-patrick-kane-athletes-patrick-kane-celebrating-1023x677.png?raw=true"/>
-        <img src="https://github.com/jburnt17/chirp/blob/main/react-app/public/toppng.com-hockey-player-1250x1000.png?raw=true"/>
+        <img />
       </div>
       <div className="right-login">
         <form onSubmit={onLogin}>
