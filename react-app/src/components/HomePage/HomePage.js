@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createGame, getGames } from "../../store/games";
 import { getTodaysGames } from "../../store/teams";
+import CreateGameLobby from "../CreateGameLobbyForm/CreateGameLobby";
 import GameLobby from "../GameLobby/GameLobby";
 import NavBar from "../NavBar";
 import TodaysGames from "../TodaysGames/TodaysGames";
@@ -18,13 +19,6 @@ function HomePage() {
   const gameLobbiesObj = useSelector((state) => state.gameLobbies);
   const gameLobbies = Object.values(gameLobbiesObj);
 
-  const [gameOption, setGameOption] = useState(0);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(createGame(gameOption));
-  };
-
   useEffect(() => [dispatch(getTodaysGames())], []);
 
   useEffect(() => {
@@ -34,29 +28,22 @@ function HomePage() {
 
   return (
     <div>
-      <NavBar />
-      <div>
-        <form
-          onSubmit={(e) => handleSubmit(e)}
-          onChange={(e) => setGameOption(e.target.value)}
-        >
-          <select>
-            {gamesToday.map((gameToday, i) => (
-              <option value={i}>
-                {gameToday.teams.away.team.name} vs{" "}
-                {gameToday.teams.home.team.name}
-              </option>
-            ))}
-          </select>
-          <button>Submit</button>
-        </form>
+      <div className="home-page-body">
+        <div className="home-page-left">
+          <NavBar />
+        </div>
+        <div className="home-page-middle">
+          <CreateGameLobby gamesToday={gamesToday} />
+          <GameLobby
+            gameLobbies={gameLobbies}
+            gamesToday={gamesToday}
+            sessionUser={sessionUser}
+          />
+        </div>
+        <div className="home-page-right">
+          <TodaysGames gamesToday={gamesToday} />
+        </div>
       </div>
-      <TodaysGames gamesToday={gamesToday} />
-      <GameLobby
-        gameLobbies={gameLobbies}
-        gamesToday={gamesToday}
-        sessionUser={sessionUser}
-      />
     </div>
   );
 }

@@ -52,13 +52,13 @@
   font-size: 12px;
   padding: 0rem 2px;
   top: 0;
-  background-color: white;
+  background-color: #fdfdfd;
 }
 .login-input:valid ~ .login-label {
   font-size: 12px;
   padding: 0rem 2px;
   top: 0;
-  background-color: white;
+  background-color: #fdfdfd;
 }
 .login-form {
   display: flex;
@@ -98,4 +98,12 @@
 .login-signup-link {
   color: rgb(73, 73, 255);
   cursor: pointer;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  border: 1px solid rgba(48, 48, 48, 0.712);
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
