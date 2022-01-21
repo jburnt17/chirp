@@ -12,6 +12,7 @@ function GameLobbyPage() {
   const dispatch = useDispatch();
   const { gameNumber, gameId } = useParams();
   const [content, setContent] = useState("");
+  const [editState, setEditState] = useState(false);
 
   const sessionUser = useSelector((state) => state.session.user);
   const gamesTodayObj = useSelector((state) => state.gamesToday);
@@ -25,7 +26,6 @@ function GameLobbyPage() {
   const gameLobbyChirps = unfilteredChirps.filter(
     (chirp) => +chirp.game_id === +gameId
   );
-  console.log(gameLobbyChirps);
 
   const game = gamesToday[gameNumber];
   const teams = game?.teams;
@@ -36,6 +36,18 @@ function GameLobbyPage() {
   const handleChirpSubmit = (e) => {
     e.preventDefault();
     dispatch(createChirp(gameId, content));
+    setContent("");
+  };
+
+  const handleEditChirp = (e) => {
+    e.preventDefault();
+  };
+
+  const handleEditState = (content) => {
+    const textArea = document.querySelector("#chirp-text-area");
+    setContent(content);
+    setEditState(true);
+    textArea?.focus();
   };
 
   useEffect(() => {
@@ -48,10 +60,6 @@ function GameLobbyPage() {
     dispatch(getGames());
     dispatch(getTodaysGames());
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   console.log(content)
-  // }, [content])
 
   return (
     <div className="game-lobby-page-body">
@@ -69,21 +77,50 @@ function GameLobbyPage() {
             <div>{awayTeamInfo.name}</div>
           ))}
         <div>{away && away.score}</div>
-        <form onSubmit={(e) => handleChirpSubmit(e)}>
-          <textarea
-            onChange={(e) => setContent(e.target.value)}
-            type="text"
-            value={content}
-          />
-          <button>Chirp</button>
-        </form>
+        {!editState ? (
+          <form onSubmit={(e) => handleChirpSubmit(e)}>
+            <textarea
+              placeholder="chirp"
+              onChange={(e) => setContent(e.target.value)}
+              type="text"
+              value={content}
+            />
+            <button>Chirp</button>
+          </form>
+        ) : (
+          <form onSubmit={(e) => handleEditChirp(e)}>
+            <textarea
+              id="chirp-text-area"
+              onChange={(e) => setContent(e.target.value)}
+              type="text"
+              value={content}
+            />
+            <button>Edit Chirp</button>
+            <button
+              onClick={() => {
+                setEditState(false);
+                setContent("");
+              }}
+            >
+              Cancel
+            </button>
+          </form>
+        )}
         {gameLobbyChirps.map((chirp) => (
           <div>
             <div>{chirp.content}</div>
             {chirp.user_id === sessionUser.id && (
-              <button onClick={() => dispatch(deleteChirp(gameId, chirp.id))}>
-                Delete
-              </button>
+              <div>
+                <button onClick={() => dispatch(deleteChirp(gameId, chirp.id))}>
+                  Delete
+                </button>
+                <button
+                  className="edit-chirp-button"
+                  onClick={() => handleEditState(chirp.content)}
+                >
+                  Edit
+                </button>
+              </div>
             )}
           </div>
         ))}
