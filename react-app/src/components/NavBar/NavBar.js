@@ -38,11 +38,11 @@ const NavBar = () => {
           <div className="nav-scores-link">Scores</div>
         </li>
         <li>
-          <img className="nav-icon" src="medal.svg"/>
+          <img className="nav-icon" src="https://raw.githubusercontent.com/jburnt17/chirp/58e4af7c87d4fab131fbea0adfbc59caa7574aff/react-app/public/medal.svg"/>
           <div className="nav-scores-link">Stats</div>
         </li>
         <li>
-          <img className="nav-icon" src="trophy2.svg"/>
+          <img className="nav-icon" src="https://raw.githubusercontent.com/jburnt17/chirp/58e4af7c87d4fab131fbea0adfbc59caa7574aff/react-app/public/trophy2.svg"/>
           <div className="nav-scores-link">Standings</div>
         </li>
         <li>
