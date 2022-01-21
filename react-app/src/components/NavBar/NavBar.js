@@ -38,6 +38,14 @@ const NavBar = () => {
           <div className="nav-scores-link">Scores</div>
         </li>
         <li>
+          <img className="nav-icon" src="medal.svg"/>
+          <div className="nav-scores-link">Stats</div>
+        </li>
+        <li>
+          <img className="nav-icon" src="trophy2.svg"/>
+          <div className="nav-scores-link">Standings</div>
+        </li>
+        <li>
           <UserIcon className="nav-icon" />
           <NavLink
             className="users"
