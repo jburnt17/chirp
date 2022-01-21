@@ -14,12 +14,17 @@ function GameLobbyPage() {
   const [content, setContent] = useState("");
 
   const sessionUser = useSelector((state) => state.session.user);
-
   const gamesTodayObj = useSelector((state) => state.gamesToday);
-  const gamesToday = Object.values(gamesTodayObj);
-
   const gameLobbiesObj = useSelector((state) => state.gameLobbies);
+  const gameLobbyChirpsObj = useSelector((state) => state.chirps);
+
+  const gamesToday = Object.values(gamesTodayObj);
   const gameLobbies = Object.values(gameLobbiesObj);
+  const unfilteredChirps = Object.values(gameLobbyChirpsObj);
+  console.log('chirps', unfilteredChirps)
+  const gameLobbyChirps = unfilteredChirps.filter((chirp) => +chirp.game_id === +gameId);
+  console.log(gameLobbyChirps)
+
   const game = gamesToday[gameNumber];
   const teams = game?.teams;
   let home, away;
@@ -29,12 +34,12 @@ function GameLobbyPage() {
   const handleChirpSubmit = (e) => {
     e.preventDefault();
     dispatch(createChirp(gameId, content));
-  }
+  };
 
   useEffect(() => {
     dispatch(getGames());
     dispatch(getTodaysGames());
-    dispatch(loadChirps(gameId))
+    dispatch(loadChirps(gameId));
   }, []);
 
   useEffect(() => {
@@ -70,6 +75,11 @@ function GameLobbyPage() {
           />
           <button>Chirp</button>
         </form>
+        {gameLobbyChirps.map((chirp) => (
+          <div>
+            <div>{chirp.content}</div>
+          </div>
+        ))}
       </div>
       <div className="game-lobby-right">
         <TodaysGames gamesToday={gamesToday} />
