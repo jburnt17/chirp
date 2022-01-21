@@ -34,10 +34,13 @@ function HomePage() {
         </div>
         <div className="home-page-middle">
           <div className="middle-nav">
-            <div onClick={() => document.documentElement.scrollTop = 0}>Home</div>
+            <div onClick={() => (document.documentElement.scrollTop = 0)}>
+              Home
+            </div>
           </div>
-          <CreateGameLobby className="game-lobby" gamesToday={gamesToday} />
+          <CreateGameLobby gamesToday={gamesToday} />
           <GameLobby
+            className="game-lobby"
             gameLobbies={gameLobbies}
             gamesToday={gamesToday}
             sessionUser={sessionUser}

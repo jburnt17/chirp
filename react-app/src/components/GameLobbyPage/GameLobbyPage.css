@@ -1,0 +1,23 @@
+.game-lobby-page-body {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100vh;
+  position: relative;
+}
+.game-lobby-left {
+  border-right: 1px solid rgba(59, 59, 59, 0.2);
+  display: flex;
+  justify-content: flex-end;
+  /* padding: 1rem 2rem; */
+  padding: 0rem 3rem;
+}
+.game-lobby-middle {
+  grid-column: span 2;
+}
+.game-lobby-right {
+  border-left: 1px solid rgba(59, 59, 59, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

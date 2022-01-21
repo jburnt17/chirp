@@ -3,9 +3,11 @@ import { useDispatch } from "react-redux";
 import { DotsHorizontalIcon } from "@heroicons/react/outline";
 import "./GameLobby.css";
 import { removeGame } from "../../store/games";
+import { useHistory } from "react-router-dom";
 
 function GameLobby({ gameLobbies, gamesToday, sessionUser }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [showOptions, setShowOptions] = useState(false);
 
   const handleDelete = (e) => {
@@ -17,20 +19,13 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser }) {
   return (
     <div>
       {gameLobbies.map((gameLobby, i) => (
-        <div className="game-lobby">
+        <div className="game-lobby" onClick={() => history.push(`/games/${gameLobby.game_number}/${gameLobby.id}`)}>
           <div className="game-lobby-user-info">
             <img src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg"/>
             <p>User</p>
           </div>
           <div className="schedule-container">
             <div className="game-lobby-con">
-              {/* <div className="game-date">
-                {
-                  new Date(gamesToday[gameLobby.game_number]?.gameDate)
-                    .toLocaleString()
-                    .split(",")[1]
-                }
-              </div> */}
               <div className="lobby-info">
               <span>
               {gamesToday[gameLobby.game_number]?.teams.away.team.name !== "Seattle Kraken" ? (
