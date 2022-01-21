@@ -20,7 +20,7 @@
 .middle-nav {
   position: sticky;
   background-color: white;
-  opacity: 98%;
+  opacity: .98;
   height: 3rem;
   top: 0;
   display: flex;

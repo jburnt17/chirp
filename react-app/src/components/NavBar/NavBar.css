@@ -63,7 +63,7 @@
   width: 60px;
   height: 60px;
   margin-right: .8rem;
-  opacity: 70%;
+  opacity: .7;
 }
 .user-profile-container {
   display: flex;
@@ -84,7 +84,7 @@
   font-weight: 600;
 }
 .nav-email {
-  opacity: 70%;
+  opacity: .7;
 }
 .nav-user-options {
   z-index: 100;
@@ -123,7 +123,7 @@
   width: 80px;
   height: 80px;
   margin-right: .8rem;
-  opacity: 70%;
+  opacity: .7;
 }
 .logout-button:hover {
   background-color: rgba(128, 128, 128, 0.13);

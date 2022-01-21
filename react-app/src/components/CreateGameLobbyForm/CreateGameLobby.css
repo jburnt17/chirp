@@ -9,7 +9,7 @@
 }
 .game-lobby-form-header > img {
   width: 64px;
-  opacity: 70%;
+  opacity: .7;
   margin-right: .5rem;
 }
 .game-lobby-form-header > p {
