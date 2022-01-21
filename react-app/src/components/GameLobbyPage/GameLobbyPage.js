@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getGames } from "../../store/games";
+import { createChirp, loadChirps } from "../../store/chirps";
 import { getTodaysGames } from "../../store/teams";
 import NavBar from "../NavBar/NavBar";
 import TodaysGames from "../TodaysGames/TodaysGames";
@@ -9,7 +10,8 @@ import "./GameLobbyPage.css";
 
 function GameLobbyPage() {
   const dispatch = useDispatch();
-  const {gameNumber} = useParams();
+  const { gameNumber, gameId } = useParams();
+  const [content, setContent] = useState("");
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -18,12 +20,21 @@ function GameLobbyPage() {
 
   const gameLobbiesObj = useSelector((state) => state.gameLobbies);
   const gameLobbies = Object.values(gameLobbiesObj);
-  const game = gamesToday[gameNumber]
-  console.log(game)
+  const game = gamesToday[gameNumber];
+  const teams = game?.teams;
+  let home, away;
+  teams && (home = teams.home);
+  teams && (away = teams.away);
+
+  const handleChirpSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createChirp(gameId, content));
+  }
 
   useEffect(() => {
     dispatch(getGames());
     dispatch(getTodaysGames());
+    dispatch(loadChirps(gameId))
   }, []);
 
   useEffect(() => {
@@ -31,13 +42,9 @@ function GameLobbyPage() {
     dispatch(getTodaysGames());
   }, [dispatch]);
 
-  const teams = game?.teams
-  let home, away
-  teams && (home = teams.home)
-  teams && (away = teams.away)
-  console.log('home', home)
-  console.log('away', away)
-
+  // useEffect(() => {
+  //   console.log(content)
+  // }, [content])
 
   return (
     <div className="game-lobby-page-body">
@@ -45,14 +52,24 @@ function GameLobbyPage() {
         <NavBar />
       </div>
       <div className="game-lobby-middle">
-        {home && Object.values(home).map((homeTeamInfo) => (
-          <div>{homeTeamInfo.name}</div>
-        ))}
+        {home &&
+          Object.values(home).map((homeTeamInfo) => (
+            <div>{homeTeamInfo.name}</div>
+          ))}
         <div>{home && home.score}</div>
-        {away && Object.values(away).map((awayTeamInfo) => (
-          <div>{awayTeamInfo.name}</div>
-        ))}
+        {away &&
+          Object.values(away).map((awayTeamInfo) => (
+            <div>{awayTeamInfo.name}</div>
+          ))}
         <div>{away && away.score}</div>
+        <form onSubmit={(e) => handleChirpSubmit(e)}>
+          <textarea
+            onChange={(e) => setContent(e.target.value)}
+            type="text"
+            value={content}
+          />
+          <button>Chirp</button>
+        </form>
       </div>
       <div className="game-lobby-right">
         <TodaysGames gamesToday={gamesToday} />

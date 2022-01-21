@@ -57,3 +57,9 @@ def add_chirp(id):
     db.session.commit()
     return new_chirp.to_dict()
   return {"error": form.errors}
+
+@game_routes.route('/<int:id>/chirps')
+@login_required
+def get_chirps(id):
+  chirps = Chirp.query.filter_by(game_id=id)
+  return {'chirps': [chirp.to_dict() for chirp in chirps]}
