@@ -46,7 +46,7 @@ const SignUpForm = () => {
   return (
     <div className="login-body">
       <video className="left-login" muted autoPlay loop>
-        <source className="login-image" src="/hockey-video.mp4" />
+        <source className="login-image" src="https://jmb-s3-bucket.s3.amazonaws.com/hockey-video.mp4" />
       </video>
       <div className="right-login">
         <form className="login-form" onSubmit={onSignUp}>
