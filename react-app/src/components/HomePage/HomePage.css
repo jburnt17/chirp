@@ -32,6 +32,12 @@
   font-weight: bold;
   cursor: pointer;
 }
+.game-lobby {
+  cursor: pointer;
+}
+.game-lobby:hover {
+  background-color: rgba(223, 223, 223, 0.233);
+}
 
 /* RIGHT SIDE  */
 .home-page-right {

@@ -5,19 +5,18 @@
   align-items: center;
   height: fit-content;
   position: relative;
-  margin-top: 1rem;
 }
 #lobby-options {
   position: absolute;
   right: 0;
   top: 0;
-  margin: -.8rem .8rem;
+  margin: 0rem .8rem;
 }
 .game-lobby-user-info {
   display: flex;
   align-items: flex-start;
   position: absolute;
-  margin: 0rem 1rem;
+  margin: .5rem 1rem;
 }
 .game-lobby-user-info > img {
   height: 32px;
@@ -33,7 +32,7 @@
 .lobby-info {
   display: flex;
   align-items: center;
-  margin: 5rem 0rem;
+  margin: 5.5rem 0rem;
   width: 100%;
   justify-content: space-evenly;
   padding: 0rem 2rem;
