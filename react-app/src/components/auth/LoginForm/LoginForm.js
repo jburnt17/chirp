@@ -35,7 +35,10 @@ const LoginForm = () => {
   return (
     <div className="login-body">
       <video className="left-login" muted autoPlay loop>
-        <source className="login-image" src="/hockey-video.mp4" />
+        <source
+          className="login-image"
+          src="https://jmb-s3-bucket.s3.amazonaws.com/hockey-video.mp4"
+        />
       </video>
       <div className="right-login">
         <form className="login-form" onSubmit={onLogin}>
@@ -76,7 +79,13 @@ const LoginForm = () => {
           </button>
           <div className="login-signup-link-con">
             <p>
-              Don't have an account? <span onClick={() => history.push('/sign-up')} className="login-signup-link">Sign Up</span>
+              Don't have an account?{" "}
+              <span
+                onClick={() => history.push("/sign-up")}
+                className="login-signup-link"
+              >
+                Sign Up
+              </span>
             </p>
           </div>
         </form>
