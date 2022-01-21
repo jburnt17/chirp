@@ -9,7 +9,7 @@ class Game(db.Model):
   game_number = db.Column(db.Integer, nullable=False)
 
   user = db.relationship('User', back_populates="games")
-  chirps = db.relationship('Chirp', back_populates="game", cascade="all, delete")
+  chirps = db.relationship('Chirp', back_populates="game", cascade="all,delete")
 
   def to_dict(self):
     return {

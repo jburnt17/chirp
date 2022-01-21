@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getGames } from "../../store/games";
-import { createChirp, loadChirps } from "../../store/chirps";
+import { createChirp, deleteChirp, loadChirps } from "../../store/chirps";
 import { getTodaysGames } from "../../store/teams";
 import NavBar from "../NavBar/NavBar";
 import TodaysGames from "../TodaysGames/TodaysGames";
@@ -21,9 +21,11 @@ function GameLobbyPage() {
   const gamesToday = Object.values(gamesTodayObj);
   const gameLobbies = Object.values(gameLobbiesObj);
   const unfilteredChirps = Object.values(gameLobbyChirpsObj);
-  console.log('chirps', unfilteredChirps)
-  const gameLobbyChirps = unfilteredChirps.filter((chirp) => +chirp.game_id === +gameId);
-  console.log(gameLobbyChirps)
+  console.log("chirps", unfilteredChirps);
+  const gameLobbyChirps = unfilteredChirps.filter(
+    (chirp) => +chirp.game_id === +gameId
+  );
+  console.log(gameLobbyChirps);
 
   const game = gamesToday[gameNumber];
   const teams = game?.teams;
@@ -78,6 +80,11 @@ function GameLobbyPage() {
         {gameLobbyChirps.map((chirp) => (
           <div>
             <div>{chirp.content}</div>
+            {chirp.user_id === sessionUser.id && (
+              <button onClick={() => dispatch(deleteChirp(gameId, chirp.id))}>
+                Delete
+              </button>
+            )}
           </div>
         ))}
       </div>

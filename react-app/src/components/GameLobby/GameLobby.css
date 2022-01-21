@@ -5,12 +5,20 @@
   align-items: center;
   height: fit-content;
   position: relative;
+  transition: all .1s ease-out;
+}
+.game-lobby-con:hover {
+  background-color: rgba(223, 223, 223, 0.233);
 }
 #lobby-options {
   position: absolute;
   right: 0;
   top: 0;
   margin: 0rem .8rem;
+  z-index: inherit;
+}
+#lobby-options:hover {
+  color: rgb(79, 149, 255);
 }
 .game-lobby-user-info {
   display: flex;

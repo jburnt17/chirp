@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     games = db.relationship('Game', back_populates="user")
-    chirps = db.relationship('Chirp', back_populates="user", cascade="all, delete")
+    chirps = db.relationship('Chirp', back_populates="user")
 
     @property
     def password(self):

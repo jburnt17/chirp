@@ -63,3 +63,13 @@ def add_chirp(id):
 def get_chirps(id):
   chirps = Chirp.query.filter_by(game_id=id)
   return {'chirps': [chirp.to_dict() for chirp in chirps]}
+
+@game_routes.route('/<int:game_id>/chirps/<int:chirp_id>', methods=["DELETE"])
+@login_required
+def delete_chirp(game_id, chirp_id):
+  chirp = Chirp.query.get(chirp_id)
+  result = chirp.to_dict()
+  chirp = db.session.query(Chirp).filter(Chirp.id == chirp_id).first()
+  db.session.delete(chirp)
+  db.session.commit()
+  return result

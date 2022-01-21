@@ -18,7 +18,7 @@ function TodaysGames({ gamesToday }) {
                   />
                 ) : (
                   <img
-                    width={24}
+                    width={28}
                     src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gameToday.teams.away.team.id}.svg
 `}
                   />
@@ -42,7 +42,7 @@ function TodaysGames({ gamesToday }) {
                   />
                 ) : (
                   <img
-                    width={24}
+                    width={28}
                     src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${gameToday.teams.home.team.id}.svg
 `}
                   />
