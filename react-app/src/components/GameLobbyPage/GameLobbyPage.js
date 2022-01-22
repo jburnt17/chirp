@@ -8,7 +8,7 @@ import {
   loadChirps,
   updateChirp,
 } from "../../store/chirps";
-import { getTodaysGames } from "../../store/teams";
+import { getTodaysGames } from "../../store/todaysGames";
 import NavBar from "../NavBar/NavBar";
 import TodaysGames from "../TodaysGames/TodaysGames";
 import "./GameLobbyPage.css";

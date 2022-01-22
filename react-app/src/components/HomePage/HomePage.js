@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getGames } from "../../store/games";
-import { getTodaysGames } from "../../store/teams";
+import { getTodaysGames } from "../../store/todaysGames";
 import CreateGameLobby from "../CreateGameLobbyForm/CreateGameLobby";
 import GameLobby from "../GameLobby/GameLobby";
 import NavBar from "../NavBar/NavBar";

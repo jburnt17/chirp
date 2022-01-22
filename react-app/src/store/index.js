@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import chirpReducer from "./chirps";
 import gameReducer from "./games";
 import session from "./session";
-import gamesTodayReducer from "./teams";
+import gamesTodayReducer from "./todaysGames";
 
 const rootReducer = combineReducers({
   session,
