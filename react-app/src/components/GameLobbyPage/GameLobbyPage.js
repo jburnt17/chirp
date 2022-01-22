@@ -53,6 +53,16 @@ function GameLobbyPage() {
     setContent("");
   };
 
+  const handleEnter = (e) => {
+    const textArea = document.querySelector(".chirp-bottom-input");
+    console.log("keyCode =>", e);
+    if (e.charCode === 13 && !e.shiftKey) {
+      e.preventDefault();
+      dispatch(createChirp(gameId, content));
+      setContent("");
+    }
+  };
+
   const handleEditChirp = (e) => {
     e.preventDefault();
     dispatch(updateChirp(gameId, editChirpId, content));
@@ -88,21 +98,30 @@ function GameLobbyPage() {
           ))}
         <div>{away && away.score}</div>
         {!editState ? (
-          <form onSubmit={(e) => handleChirpSubmit(e)}>
+          <form
+            className="chirp-bottom-input"
+            onSubmit={(e) => handleChirpSubmit(e)}
+          >
             <textarea
+              onKeyPress={(e) => handleEnter(e)}
               placeholder="chirp"
               onChange={(e) => setContent(e.target.value)}
-              type="text"
+              type="submit"
               value={content}
+              id="chirp-text-area"
             />
             <button>Chirp</button>
           </form>
         ) : (
-          <form onSubmit={(e) => handleEditChirp(e)}>
+          <form
+            className="chirp-bottom-input"
+            onSubmit={(e) => handleEditChirp(e)}
+          >
             <textarea
+              onKeyPress={() => handleEnter()}
               id="chirp-text-area"
               onChange={(e) => setContent(e.target.value)}
-              type="text"
+              type="submit"
               value={content}
             />
             <button>Edit Chirp</button>

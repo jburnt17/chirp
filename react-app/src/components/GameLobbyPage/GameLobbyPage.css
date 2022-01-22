@@ -1,3 +1,4 @@
+/* LEFT  */
 .game-lobby-page-body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -11,13 +12,20 @@
   /* padding: 1rem 2rem; */
   padding: 0rem 3rem;
 }
+
+/* MIDDLE  */
 .game-lobby-middle {
   grid-column: span 2;
 }
+.chirp-bottom-input {
+  position: absolute;
+  bottom: 0;
+}
+
+/* RIGHT  */
 .game-lobby-right {
   border-left: 1px solid rgba(59, 59, 59, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
