@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getGames } from "../../store/games";
-import { createChirp, deleteChirp, loadChirps } from "../../store/chirps";
+import {
+  createChirp,
+  deleteChirp,
+  loadChirps,
+  updateChirp,
+} from "../../store/chirps";
 import { getTodaysGames } from "../../store/teams";
 import NavBar from "../NavBar/NavBar";
 import TodaysGames from "../TodaysGames/TodaysGames";
@@ -13,6 +18,7 @@ function GameLobbyPage() {
   const { gameNumber, gameId } = useParams();
   const [content, setContent] = useState("");
   const [editState, setEditState] = useState(false);
+  const [editChirpId, setEditChirpId] = useState();
 
   const sessionUser = useSelector((state) => state.session.user);
   const gamesTodayObj = useSelector((state) => state.gamesToday);
@@ -33,6 +39,14 @@ function GameLobbyPage() {
   teams && (home = teams.home);
   teams && (away = teams.away);
 
+  const handleEditState = (content, chirpId) => {
+    const textArea = document.querySelector("#chirp-text-area");
+    setEditChirpId(chirpId);
+    setContent(content);
+    setEditState(true);
+    textArea?.focus();
+  };
+
   const handleChirpSubmit = (e) => {
     e.preventDefault();
     dispatch(createChirp(gameId, content));
@@ -41,13 +55,9 @@ function GameLobbyPage() {
 
   const handleEditChirp = (e) => {
     e.preventDefault();
-  };
-
-  const handleEditState = (content) => {
-    const textArea = document.querySelector("#chirp-text-area");
-    setContent(content);
-    setEditState(true);
-    textArea?.focus();
+    dispatch(updateChirp(gameId, editChirpId, content));
+    setContent("");
+    setEditState(false);
   };
 
   useEffect(() => {
@@ -116,7 +126,7 @@ function GameLobbyPage() {
                 </button>
                 <button
                   className="edit-chirp-button"
-                  onClick={() => handleEditState(chirp.content)}
+                  onClick={() => handleEditState(chirp.content, chirp.id)}
                 >
                   Edit
                 </button>

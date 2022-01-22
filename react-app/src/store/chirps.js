@@ -1,6 +1,7 @@
 const ADD_CHIRP = "chirps/ADD_CHIRP";
 const GET_CHIRPS = "chirps/GET_CHIRPS";
 const REMOVE_CHIRP = "chirps/REMOVE_CHIRP";
+const EDIT_CHIRP = "chirps/EDIT_CHIRP";
 
 const addChirp = (chirp) => ({
   type: ADD_CHIRP,
@@ -17,8 +18,26 @@ const removeChirp = (chirp) => ({
   payload: chirp,
 });
 
-export const createChirp = (chirpId, content) => async (dispatch) => {
-  const response = await fetch(`/api/games/${chirpId}/chirps`, {
+const editChirp = (chirp) => ({
+  type: EDIT_CHIRP,
+  payload: chirp,
+});
+
+export const updateChirp = (game_id, chirp_id, content) => async (dispatch) => {
+  const response = await fetch(`/api/games/${game_id}/chirps/${chirp_id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ content }),
+  });
+  if (response.ok) {
+    const chirpToEdit = await response.json();
+    dispatch(editChirp(chirpToEdit));
+    return chirpToEdit;
+  }
+};
+
+export const createChirp = (gameId, content) => async (dispatch) => {
+  const response = await fetch(`/api/games/${gameId}/chirps`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ content }),
@@ -46,7 +65,7 @@ export const deleteChirp = (game_id, chirp_id) => async (dispatch) => {
   if (response.ok) {
     const chirpToDelete = await response.json();
     dispatch(removeChirp(chirpToDelete));
-    return chirpToDelete
+    return chirpToDelete;
   }
 };
 
@@ -59,9 +78,14 @@ export default function chirpReducer(state = {}, action) {
     }
     case REMOVE_CHIRP: {
       const newState = { ...state };
-      console.log('action', action)
-      console.log('action.payload', action.payload)
+      console.log("action", action);
+      console.log("action.payload", action.payload);
       delete newState[action.payload.id];
+      return newState;
+    }
+    case EDIT_CHIRP: {
+      const newState = { ...state };
+      newState[action.payload.id] = action.payload;
       return newState;
     }
     case ADD_CHIRP: {

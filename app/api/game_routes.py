@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Game, Chirp, db
-from app.forms import CreateGameForm, CreateChirpForm
+from app.forms import CreateGameForm, CreateChirpForm, EditChirpForm
 
 game_routes = Blueprint('games', __name__)
 
@@ -63,6 +63,17 @@ def add_chirp(id):
 def get_chirps(id):
   chirps = Chirp.query.filter_by(game_id=id)
   return {'chirps': [chirp.to_dict() for chirp in chirps]}
+
+@game_routes.route('/<int:game_id>/chirps/<int:chirp_id>', methods=["PUT"])
+@login_required
+def edit_chirp(game_id, chirp_id):
+  chirp = Chirp.query.get(chirp_id)
+  form = EditChirpForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  chirp.content = form.data['content']
+  db.session.commit()
+  return chirp.to_dict()
 
 @game_routes.route('/<int:game_id>/chirps/<int:chirp_id>', methods=["DELETE"])
 @login_required
