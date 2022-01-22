@@ -55,11 +55,16 @@ function GameLobbyPage() {
 
   const handleEnter = (e) => {
     const textArea = document.querySelector(".chirp-bottom-input");
-    console.log("keyCode =>", e);
-    if (e.charCode === 13 && !e.shiftKey) {
+    if (e?.charCode === 13 && !e.shiftKey) {
       e.preventDefault();
-      dispatch(createChirp(gameId, content));
-      setContent("");
+      if (editState) {
+       dispatch(updateChirp(gameId, editChirpId, content));
+       setContent("");
+       setEditState(false);
+      } else {
+        dispatch(createChirp(gameId, content));
+        setContent("");
+      }
     }
   };
 
@@ -118,7 +123,7 @@ function GameLobbyPage() {
             onSubmit={(e) => handleEditChirp(e)}
           >
             <textarea
-              onKeyPress={() => handleEnter()}
+              onKeyPress={(e) => handleEnter(e)}
               id="chirp-text-area"
               onChange={(e) => setContent(e.target.value)}
               type="submit"
