@@ -46,7 +46,11 @@
 .chirps-container {
   overflow: scroll;
   background-color: rgb(245, 245, 245);
-  height: 29.5rem;
+  margin-bottom: 5.9rem;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  flex: 1 auto;
 }
 .individual-chirp {
   padding: 1rem;
