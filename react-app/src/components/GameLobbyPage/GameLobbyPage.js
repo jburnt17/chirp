@@ -58,9 +58,9 @@ function GameLobbyPage() {
     if (e?.charCode === 13 && !e.shiftKey) {
       e.preventDefault();
       if (editState) {
-       dispatch(updateChirp(gameId, editChirpId, content));
-       setContent("");
-       setEditState(false);
+        dispatch(updateChirp(gameId, editChirpId, content));
+        setContent("");
+        setEditState(false);
       } else {
         dispatch(createChirp(gameId, content));
         setContent("");
@@ -92,16 +92,28 @@ function GameLobbyPage() {
         <NavBar />
       </div>
       <div className="game-lobby-middle">
-        {home &&
-          Object.values(home).map((homeTeamInfo) => (
-            <div>{homeTeamInfo.name}</div>
-          ))}
-        <div>{home && home.score}</div>
-        {away &&
-          Object.values(away).map((awayTeamInfo) => (
-            <div>{awayTeamInfo.name}</div>
-          ))}
-        <div>{away && away.score}</div>
+        <div>
+          <div>
+            <div>{home && home.team.name}</div>
+            <div>
+              {home &&
+                `${home.leagueRecord.wins} - ${home.leagueRecord.losses} - ${home.leagueRecord.ot}`}
+            </div>
+          </div>
+          <div>{home && home.score}</div>
+        </div>
+
+        <div>
+          <div>
+            <div>{away && away.team.name}</div>
+            <div>
+              {away &&
+                `${away.leagueRecord.wins} - ${away.leagueRecord.losses} - ${away.leagueRecord.ot}`}
+            </div>
+          </div>
+          <div>{away && away.score}</div>
+        </div>
+
         {!editState ? (
           <form
             className="chirp-bottom-input"
