@@ -9,6 +9,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import HomePage from "./components/HomePage/HomePage";
 import GameLobbyPage from "./components/GameLobbyPage/GameLobbyPage";
+import GameScoresPage from "./components/GameScoresPage/GameScoresPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/games/:gameNumber/:gameId" exact={true}>
           <GameLobbyPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/scores" exact={true}>
+          <GameScoresPage />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <HomePage />

@@ -1,0 +1,7 @@
+.game-scores-page {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.game-scores-middle {
+  grid-column: span 2;
+}

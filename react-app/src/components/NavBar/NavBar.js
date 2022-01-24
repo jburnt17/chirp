@@ -2,13 +2,14 @@ import { UserIcon } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
 import LogoutButton from "../auth/LogoutButton";
 import "./NavBar.css";
 
 const NavBar = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const [showUserOptions, setShowUserOptions] = useState(false);
 
@@ -30,7 +31,7 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        <li>
+        <li onClick={() => history.push('/scores')}>
           <img
             className="nav-icon"
             src="https://raw.githubusercontent.com/jburnt17/chirp/3305c39195afaf760ea81d434ccfc9e92be32c34/react-app/public/hockey-sticks.svg"
