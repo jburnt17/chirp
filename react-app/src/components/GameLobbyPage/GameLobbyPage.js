@@ -145,10 +145,19 @@ function GameLobbyPage() {
         </div>
         <div className="chirps-container">
           {gameLobbyChirps.map((chirp) => (
-            <div>
-              <div>{chirp.content}</div>
-              {chirp.user_id === sessionUser.id && (
+            <div className="individual-chirp">
+              <div className="chirp-user-info">
+                <img
+                  className="chirp-avatar"
+                  src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg"
+                />
                 <div>
+                  <p className="chirp-username">User</p>
+                  <div className="chirp-content">{chirp.content}</div>
+                </div>
+              </div>
+              {chirp.user_id === sessionUser.id && (
+                <div className="chirp-option-buttons">
                   <button
                     onClick={() => dispatch(deleteChirp(gameId, chirp.id))}
                   >
@@ -195,20 +204,15 @@ function GameLobbyPage() {
                 type="submit"
                 value={content}
               />
-              <div className="chirp-edit-buttons">
-                {/* <button className="chirp-button">
-                  <PaperAirplaneIcon width={20} />
-                </button> */}
-                <button
-                  className="chirp-button"
-                  onClick={() => {
-                    setEditState(false);
-                    setContent("");
-                  }}
-                >
-                  <XCircleIcon className="cancel-edit-button" width={22} />
-                </button>
-              </div>
+              <button
+                className="chirp-button"
+                onClick={() => {
+                  setEditState(false);
+                  setContent("");
+                }}
+              >
+                <XCircleIcon className="cancel-edit-button" width={28} />
+              </button>
             </form>
           )}
         </div>
