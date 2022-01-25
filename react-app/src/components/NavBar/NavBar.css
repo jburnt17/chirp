@@ -151,10 +151,12 @@
     display: none;
   }
   .nav-lobby-button {
-    width: 100px;
-    font-size: .7rem;
+    display: none;
   }
   .nav-bar-list {
     align-items: center;
+  }
+  .nav-user-info {
+    display: none;
   }
 }

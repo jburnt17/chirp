@@ -20,7 +20,7 @@ const NavBar = () => {
   return (
     <nav className="nav-bar-container">
       <ul className="nav-bar-list">
-        <li>
+        <li onClick={() => history.push('/')}>
           <HomeIcon className="nav-icon" />
           <NavLink
             className="home-text"
@@ -67,7 +67,7 @@ const NavBar = () => {
           className="nav-avatar"
           src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg"
         />
-        <div>
+        <div className="nav-user-info">
           <p className="nav-username">{user.username}</p>
           <p className="nav-email">{user.email}</p>
         </div>

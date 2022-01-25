@@ -185,6 +185,12 @@
     display: none;
   }
 }
+@media only screen and (max-width: 1100px) {
+  .game-lobby-left {
+    padding: 0;
+    justify-content: center;
+  }
+}
 @media only screen and (max-width: 940px) {
   .game-lobby-page-body {
     grid-template-columns: repeat(2, 1fr);
@@ -192,7 +198,25 @@
   .game-lobby-middle {
     grid-column: span 1;
   }
-  .game-lobby-left {
-    padding: 0;
+  #game-lobby-home-logo {
+    width: 64px;
+  }
+  #game-lobby-away-logo {
+    width: 64px;
+  }
+  .game-lobby-home-name {
+    font-size: .7rem;
+  }
+  .game-lobby-away-name {
+    font-size: .7rem;
+  }
+  .game-lobby-home-record {
+    display: none;
+  }
+  .game-lobby-away-record {
+    display: none;
+  }
+  .kraken-logo {
+    width: 32px;
   }
 }

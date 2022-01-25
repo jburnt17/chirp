@@ -100,44 +100,63 @@ function GameLobbyPage({ users }) {
             <div className="game-lobby-team-stats">
               {home && home.team.name !== "Seattle Kraken" ? (
                 <img
+                  id="game-lobby-home-logo"
                   width={128}
                   src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${home?.team.id}.svg
 `}
                 />
               ) : (
                 <img
-                  width={28}
+                  className="kraken-logo"
+                  width={58}
                   src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${home?.team.id}.svg
 `}
                 />
               )}
-              <div>{home && home.team.name}</div>
-              <div>
+              <div className="game-lobby-home-name">
+                {home && home.team.name}
+              </div>
+              <div className="game-lobby-home-record">
                 {home &&
                   `${home.leagueRecord.wins} - ${home.leagueRecord.losses} - ${home.leagueRecord.ot}`}
               </div>
             </div>
             <div className="game-lobby-score">{home && home.score}</div>
           </div>
-          {!live ? <button className="live-chat-button" onClick={() => setLive(true)}>Enter Live Chat</button> : <button className="exit-live-chat-button" onClick={() => setLive(false)}>Exit Live Chat</button>}
+          {!live ? (
+            <button className="live-chat-button" onClick={() => setLive(true)}>
+              Enter Live Chat
+            </button>
+          ) : (
+            <button
+              className="exit-live-chat-button"
+              onClick={() => setLive(false)}
+            >
+              Exit Live Chat
+            </button>
+          )}
           <div className="game-lobby-team-info">
             <div className="game-lobby-score">{away && away.score}</div>
             <div className="game-lobby-team-stats">
               {away && away.team.name !== "Seattle Kraken" ? (
                 <img
+                  id="game-lobby-away-logo"
                   width={128}
                   src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${away?.team.id}.svg
 `}
                 />
               ) : (
                 <img
-                  width={28}
+                  className="kraken-logo"
+                  width={58}
                   src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${away?.team.id}.svg
 `}
                 />
               )}
-              <div>{away && away.team.name}</div>
-              <div>
+              <div className="game-lobby-away-name">
+                {away && away.team.name}
+              </div>
+              <div className="game-lobby-away-record">
                 {away &&
                   `${away.leagueRecord.wins} - ${away.leagueRecord.losses} - ${away.leagueRecord.ot}`}
               </div>
