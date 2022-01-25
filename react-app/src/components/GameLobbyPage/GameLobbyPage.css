@@ -5,6 +5,7 @@
   height: 100vh;
   position: relative;
 }
+
 .game-lobby-left {
   border-right: 1px solid rgba(59, 59, 59, 0.2);
   display: flex;
@@ -175,4 +176,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media only screen and (max-width: 1280px) {
+  .game-lobby-page-body {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .game-lobby-right {
+    display: none;
+  }
+}
+@media only screen and (max-width: 940px) {
+  .game-lobby-page-body {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .game-lobby-middle {
+    grid-column: span 1;
+  }
+  .game-lobby-left {
+    padding: 0;
+  }
 }

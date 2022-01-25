@@ -119,7 +119,7 @@ function GameLobbyPage({ users }) {
             </div>
             <div className="game-lobby-score">{home && home.score}</div>
           </div>
-          {!live ? <button className="live-chat-button" onClick={() => setLive(true)}>Enter Live Chat</button> : <button className="exit-live-chat-button" onClick={() => setLive(false)}>Exit Chat</button>}
+          {!live ? <button className="live-chat-button" onClick={() => setLive(true)}>Enter Live Chat</button> : <button className="exit-live-chat-button" onClick={() => setLive(false)}>Exit Live Chat</button>}
           <div className="game-lobby-team-info">
             <div className="game-lobby-score">{away && away.score}</div>
             <div className="game-lobby-team-stats">
