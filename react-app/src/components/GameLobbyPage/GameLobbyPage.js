@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { PaperAirplaneIcon } from "@heroicons/react/solid";
+import { DotsHorizontalIcon, PaperAirplaneIcon, XIcon } from "@heroicons/react/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getGames } from "../../store/games";
@@ -22,6 +22,7 @@ function GameLobbyPage({ users }) {
   const [content, setContent] = useState("");
   const [editState, setEditState] = useState(false);
   const [editChirpId, setEditChirpId] = useState();
+  const [showOptions, setShowOptions] = useState(false);
   const [live, setLive] = useState(false);
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -44,6 +45,7 @@ function GameLobbyPage({ users }) {
 
   const handleEditState = (content, chirpId) => {
     const textArea = document.querySelector("#chirp-text-area");
+    setShowOptions(false)
     setEditChirpId(chirpId);
     setContent(content);
     setEditState(true);
@@ -182,20 +184,44 @@ function GameLobbyPage({ users }) {
                       <div className="chirp-content">{chirp.content}</div>
                     </div>
                   </div>
-                  {chirp.user_id === sessionUser.id && (
-                    <div className="chirp-option-buttons">
-                      <button
-                        onClick={() => dispatch(deleteChirp(gameId, chirp.id))}
-                      >
-                        Delete
-                      </button>
-                      <button
-                        className="edit-chirp-button"
-                        onClick={() => handleEditState(chirp.content, chirp.id)}
-                      >
-                        Edit
-                      </button>
+                  {showOptions == chirp.id && (
+                    <div className="lobby-page-options-cont">
+                      <div className="lobby-option-buttons">
+                        <button
+                          id="lobby-delete-button"
+                          onClick={() =>
+                            dispatch(deleteChirp(gameId, chirp.id))
+                          }
+                        >
+                          Delete
+                        </button>
+                        <button
+                        id="lobby-edit-button"
+                          className="edit-chirp-button"
+                          onClick={() =>
+                            handleEditState(chirp.content, chirp.id)
+                          }
+                        >
+                          Edit
+                        </button>
+                      </div>
+                      <XIcon onClick={() => setShowOptions(false)} className="close-chirp-options"/>
                     </div>
+                  )}
+                  {chirp.user_id === sessionUser.id && (
+                    <>
+                      <DotsHorizontalIcon
+                        width={28}
+                        className="lobby-options"
+                      />
+                      <div
+                        className="options-wrapper game-page-option-wrapper"
+                        id={`option-${chirp.id}`}
+                        onClick={(e) => {
+                          setShowOptions(e.target.id?.split("-")[1]);
+                        }}
+                      ></div>
+                    </>
                   )}
                 </div>
               ))}

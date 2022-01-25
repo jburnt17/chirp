@@ -79,13 +79,80 @@
   margin-top: .25rem;
   font-size: .9rem;
 }
-.chirp-option-buttons {
+.lobby-page-options-cont {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(68, 68, 68, 0.966);
+  z-index: 1;
+  animation: slide_left .2s ease-out;
+  cursor: default;
+}
+@keyframes slide_left {
+  from {
+    margin-left: 100%;
+}
+
+to {
+    margin-right: 0%;
+}
+}
+.lobby-option-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 4rem;
+  width: 200px;
+  position: inherit;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  background-color: white;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  border-radius: .5rem;
+}
+.lobby-option-buttons > button {
+  border: none;
+  height: 50%;
+  transition: all .2s ease-out;
+  font-weight: bold;
+  font-size: .8rem;
+}
+.lobby-option-buttons > button:hover {
+  background-color: rgba(156, 156, 156, 0.4);
+  cursor: pointer;
+}
+#lobby-delete-button {
+  border-radius: .5rem .5rem 0rem 0rem;
+  border-bottom: 1px solid rgba(59, 59, 59, 0.2);
+  color: rgb(255, 94, 94);
+}
+#lobby-edit-button {
+  border-radius: 0rem 0rem .5rem .5rem;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: normal;
+}
+.game-page-option-wrapper {
+  cursor: pointer;
+}
+.close-chirp-options {
   position: absolute;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-right: .5rem;
+  top: .5rem;
+  margin-right: 1rem;
+  color: white;
+  width: 26px;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 3px;
+  transition: all .2s ease-out;
 }
+.close-chirp-options:hover {
+  background-color: rgba(212, 212, 212, 0.678);
+}
+
 .game-lobby-input-container {
   background-color: rgb(236, 236, 236);
   border-top: 1px solid rgba(59, 59, 59, 0.2);
@@ -177,6 +244,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
+  z-index: 99;
 }
 @media only screen and (max-width: 1280px) {
   .game-lobby-page-body {
