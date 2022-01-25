@@ -18,21 +18,30 @@
 }
 .live-chat {
   background-color: white;
-  height: 90%;
-  width: 50%;
-  border-radius: 1rem;
+  height: 100%;
+  width: 100%;
   position: relative;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
-.live-chat-messages {
-  padding: 1rem;
+.ind-live-chat:nth-child(odd) {
+  background-color: rgb(212, 212, 212);
+}
+.ind-live-chat {
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+}
+.live-chat-time {
+  font-size: .7rem;
+  margin: 0rem .5rem;
+}
+.live-chat-user {
+  font-size: .8rem;
+  font-weight: bold;
+  margin-right: .2rem;
 }
 .live-chat-message {
-  padding: .5rem;
-  border: 1px solid rgba(43, 43, 43, 0.2);
-  margin-bottom: .5rem;
-  border-radius: .5rem;
-  font-size: .8rem;
+  font-size: .75rem;
 }
 .live-chat > form {
   position: absolute;
@@ -53,7 +62,6 @@
 .live-chat > form > button {
   border: none;
   border-top: 1px solid rgba(43, 43, 43, 0.1);
-  border-radius: 0rem 0rem 1rem 1rem;
   height: 50px;
   background-color: rgb(79, 149, 255);
   color: white;

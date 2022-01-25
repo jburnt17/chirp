@@ -32,6 +32,7 @@
   display: flex;
   align-items: center;
   margin: 2rem;
+  position: relative;
 }
 .game-lobby-team-stats {
   display: flex;
@@ -140,6 +141,32 @@
 }
 .cancel-edit-button:hover {
   color: rgb(255, 88, 88);
+}
+.live-chat-button {
+  border: none;
+  height: 2rem;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  background-color: rgb(79, 149, 255);
+  color: white;
+  padding: .5rem;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+.exit-live-chat-button {
+  border: none;
+  height: 2rem;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  background-color: rgb(255, 83, 83);
+  color: white;
+  padding: .5rem;
+  border-radius: .5rem;
+  cursor: pointer;
 }
 
 /* RIGHT  */
