@@ -14,13 +14,15 @@ import NavBar from "../NavBar/NavBar";
 import TodaysGames from "../TodaysGames/TodaysGames";
 import "./GameLobbyPage.css";
 import { XCircleIcon } from "@heroicons/react/outline";
+import Test from "../LiveChat/LiveChat";
 
-function GameLobbyPage() {
+function GameLobbyPage({ users }) {
   const dispatch = useDispatch();
   const { gameNumber, gameId } = useParams();
   const [content, setContent] = useState("");
   const [editState, setEditState] = useState(false);
   const [editChirpId, setEditChirpId] = useState();
+  const [live, setLive] = useState(false);
 
   const sessionUser = useSelector((state) => state.session.user);
   const gamesTodayObj = useSelector((state) => state.gamesToday);
@@ -30,7 +32,6 @@ function GameLobbyPage() {
   const gamesToday = Object.values(gamesTodayObj);
   const gameLobbies = Object.values(gameLobbiesObj);
   const unfilteredChirps = Object.values(gameLobbyChirpsObj);
-  console.log("chirps", unfilteredChirps);
   const gameLobbyChirps = unfilteredChirps.filter(
     (chirp) => +chirp.game_id === +gameId
   );
@@ -118,7 +119,7 @@ function GameLobbyPage() {
             </div>
             <div className="game-lobby-score">{home && home.score}</div>
           </div>
-
+          <button onClick={() => setLive(true)}>live chat</button>
           <div className="game-lobby-team-info">
             <div className="game-lobby-score">{away && away.score}</div>
             <div className="game-lobby-team-stats">
@@ -143,79 +144,89 @@ function GameLobbyPage() {
             </div>
           </div>
         </div>
-        <div className="chirps-container">
-          {gameLobbyChirps.map((chirp) => (
-            <div className="individual-chirp">
-              <div className="chirp-user-info">
-                <img
-                  className="chirp-avatar"
-                  src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg"
-                />
-                <div>
-                  <p className="chirp-username">User</p>
-                  <div className="chirp-content">{chirp.content}</div>
+        {!live ? (
+          <>
+            <div className="chirps-container">
+              {gameLobbyChirps.map((chirp) => (
+                <div className="individual-chirp">
+                  <div className="chirp-user-info">
+                    <img
+                      className="chirp-avatar"
+                      src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg"
+                    />
+                    <div>
+                      <p className="chirp-username">
+                        {users &&
+                          users.find((user) => user.id === chirp.user_id)
+                            .username}
+                      </p>
+                      <div className="chirp-content">{chirp.content}</div>
+                    </div>
+                  </div>
+                  {chirp.user_id === sessionUser.id && (
+                    <div className="chirp-option-buttons">
+                      <button
+                        onClick={() => dispatch(deleteChirp(gameId, chirp.id))}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        className="edit-chirp-button"
+                        onClick={() => handleEditState(chirp.content, chirp.id)}
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  )}
                 </div>
-              </div>
-              {chirp.user_id === sessionUser.id && (
-                <div className="chirp-option-buttons">
-                  <button
-                    onClick={() => dispatch(deleteChirp(gameId, chirp.id))}
-                  >
-                    Delete
+              ))}
+            </div>
+            <div className="game-lobby-input-container">
+              {!editState ? (
+                <form
+                  className="chirp-bottom-input"
+                  onSubmit={(e) => handleChirpSubmit(e)}
+                >
+                  <textarea
+                    onKeyPress={(e) => handleEnter(e)}
+                    placeholder="Start chirping..."
+                    onChange={(e) => setContent(e.target.value)}
+                    type="submit"
+                    value={content}
+                    id="chirp-text-area"
+                  />
+                  <button className="reg-chirp-button chirp-button">
+                    <PaperAirplaneIcon width={20} />
                   </button>
+                </form>
+              ) : (
+                <form
+                  className="chirp-bottom-input"
+                  onSubmit={(e) => handleEditChirp(e)}
+                >
+                  <textarea
+                    onKeyPress={(e) => handleEnter(e)}
+                    id="chirp-text-area"
+                    onChange={(e) => setContent(e.target.value)}
+                    type="submit"
+                    value={content}
+                  />
                   <button
-                    className="edit-chirp-button"
-                    onClick={() => handleEditState(chirp.content, chirp.id)}
+                    className="chirp-button"
+                    onClick={() => {
+                      setEditState(false);
+                      setContent("");
+                    }}
                   >
-                    Edit
+                    <XCircleIcon className="cancel-edit-button" width={28} />
                   </button>
-                </div>
+                </form>
               )}
             </div>
-          ))}
-        </div>
-        <div className="game-lobby-input-container">
-          {!editState ? (
-            <form
-              className="chirp-bottom-input"
-              onSubmit={(e) => handleChirpSubmit(e)}
-            >
-              <textarea
-                onKeyPress={(e) => handleEnter(e)}
-                placeholder="Start chirping..."
-                onChange={(e) => setContent(e.target.value)}
-                type="submit"
-                value={content}
-                id="chirp-text-area"
-              />
-              <button className="reg-chirp-button chirp-button">
-                <PaperAirplaneIcon width={20} />
-              </button>
-            </form>
-          ) : (
-            <form
-              className="chirp-bottom-input"
-              onSubmit={(e) => handleEditChirp(e)}
-            >
-              <textarea
-                onKeyPress={(e) => handleEnter(e)}
-                id="chirp-text-area"
-                onChange={(e) => setContent(e.target.value)}
-                type="submit"
-                value={content}
-              />
-              <button
-                className="chirp-button"
-                onClick={() => {
-                  setEditState(false);
-                  setContent("");
-                }}
-              >
-                <XCircleIcon className="cancel-edit-button" width={28} />
-              </button>
-            </form>
-          )}
-        </div>
+          </>
+        ) : (
+          <Test gameId={gameId} />
+        )}
       </div>
       <div className="game-lobby-right">
         <TodaysGames gamesToday={gamesToday} />

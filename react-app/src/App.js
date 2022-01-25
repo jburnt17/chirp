@@ -13,6 +13,16 @@ import GameScoresPage from "./components/GameScoresPage/GameScoresPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,7 +53,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/games/:gameNumber/:gameId" exact={true}>
-          <GameLobbyPage />
+          <GameLobbyPage users={users}/>
         </ProtectedRoute>
         <ProtectedRoute path="/scores" exact={true}>
           <GameScoresPage />
