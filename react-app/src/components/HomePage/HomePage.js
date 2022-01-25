@@ -8,7 +8,7 @@ import NavBar from "../NavBar/NavBar";
 import TodaysGames from "../TodaysGames/TodaysGames";
 import "./HomePage.css";
 
-function HomePage() {
+function HomePage({users}) {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -40,6 +40,7 @@ function HomePage() {
           </div>
           <CreateGameLobby gamesToday={gamesToday} />
           <GameLobby
+          users={users}
             className="game-lobby"
             gameLobbies={gameLobbies}
             gamesToday={gamesToday}

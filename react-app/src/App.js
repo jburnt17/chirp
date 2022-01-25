@@ -59,7 +59,7 @@ function App() {
           <GameScoresPage />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-          <HomePage />
+          <HomePage users={users}/>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -11,6 +11,7 @@
   justify-content: flex-end;
   /* padding: 1rem 2rem; */
   padding: 0rem 3rem;
+  z-index: 99;
 }
 
 /* MIDDLE  */
@@ -42,6 +43,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
+  z-index: 111;
 }
 @media only screen and (max-width: 1280px) {
   .home-page-body {

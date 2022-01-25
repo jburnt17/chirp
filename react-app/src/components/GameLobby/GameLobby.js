@@ -5,10 +5,10 @@ import "./GameLobby.css";
 import { removeGame } from "../../store/games";
 import { useHistory } from "react-router-dom";
 
-function GameLobby({ gameLobbies, gamesToday, sessionUser }) {
+function GameLobby({ gameLobbies, gamesToday, sessionUser, users }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [showOptions, setShowOptions] = useState(false);
+  const [showOptions, setShowOptions] = useState("");
 
   const handleDelete = (e) => {
     const lobbyId = e.target.className.split("-")[1];
@@ -22,7 +22,9 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser }) {
         <div className="game-lobby">
           <div className="game-lobby-user-info">
             <img src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg" />
-            <p>User</p>
+            <p>{users &&
+                          users.find((user) => user.id === gameLobby.user_id)
+                            .username}</p>
           </div>
           <div
             className="schedule-container"
@@ -81,25 +83,38 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser }) {
                   )}
                 </span>
               </div>
-              {/* TODO!!! FIX BUTTON ONCLICK SHOWING ALL DELETE BUTTONS */}
-              {showOptions && (
-                <div>
-                  <button
-                    className={`button-${gameLobby.id}`}
-                    onClick={(e) => handleDelete(e)}
-                  >
-                    Delete
-                  </button>
+              {showOptions == gameLobby.id && (
+                <div className="home-page-options-cont">
+                  <div className="home-option-buttons">
+                    <button
+                      className={`button-${gameLobby.id}`}
+                      onClick={(e) => handleDelete(e)}
+                      id="delete-button"
+                    >
+                      Delete
+                    </button>
+                    <button id="cancel-button" onClick={() => setShowOptions(false)}>
+                      Cancel
+                    </button>
+                  </div>
                 </div>
               )}
               {sessionUser.id === gameLobby.user_id && (
-                <DotsHorizontalIcon
-                  width={24}
-                  cursor={"pointer"}
-                  className={`lobby-option-icon-${i}`}
-                  id="lobby-options"
-                  onClick={() => setShowOptions(!showOptions)}
-                />
+                <>
+                  <DotsHorizontalIcon
+                    width={28}
+                    cursor={"pointer"}
+                    className="lobby-options"
+                  />
+                  <div
+                    className="options-wrapper"
+                    id={`option-${gameLobby.id}`}
+                    onClick={(e) => {
+                      console.log(e.target);
+                      setShowOptions(e.target.id?.split("-")[1]);
+                    }}
+                  ></div>
+                </>
               )}
             </div>
           </div>
