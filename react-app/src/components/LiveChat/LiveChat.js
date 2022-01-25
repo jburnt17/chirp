@@ -45,27 +45,25 @@ const Test = ({ gameId }) => {
   return (
     user && (
       <div className="live-chat-body">
-        <div className="live-chat">
-          <div className="live-chat-messages">
-            {messages.map((message, ind) => (
-              <div className="ind-live-chat">
-                <div className="live-chat-time">{message.time}</div>
-                <div className="live-chat-user">{message.user}:</div>
-                <div className="live-chat-message" key={ind}>
-                  {message.msg}
-                </div>
+        <div className="live-chat-messages">
+          {messages.map((message, ind) => (
+            <div className="ind-live-chat">
+              <div className="live-chat-time">{message.time}</div>
+              <div className="live-chat-user">{message.user}:</div>
+              <div className="live-chat-message" key={ind}>
+                {message.msg}
               </div>
-            ))}
-          </div>
-          <form onSubmit={sendChat}>
-            <input
-              placeholder="Start Chatting..."
-              value={chatInput}
-              onChange={updateChatInput}
-            />
-            <button type="submit">Send</button>
-          </form>
+            </div>
+          ))}
         </div>
+        <form className="live-chat-form" onSubmit={sendChat}>
+          <input
+            placeholder="Start Chatting..."
+            value={chatInput}
+            onChange={updateChatInput}
+          />
+          <button type="submit">Send</button>
+        </form>
       </div>
     )
   );

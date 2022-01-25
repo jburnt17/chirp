@@ -1,11 +1,10 @@
 .live-chat-body {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   animation: slide_down .2s;
   background-color: rgba(197, 197, 197, 0.103);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 @keyframes slide_down {
   from {
@@ -16,12 +15,13 @@
     margin-bottom: 0%;
   }
 }
-.live-chat {
-  background-color: white;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+.live-chat-messages {
+  overflow: scroll;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 auto;
+  height: 100px;
 }
 .ind-live-chat:nth-child(odd) {
   background-color: rgb(212, 212, 212);
@@ -43,7 +43,7 @@
 .live-chat-message {
   font-size: .75rem;
 }
-.live-chat > form {
+.live-chat-form {
   position: absolute;
   bottom: 0;
   border-top: 1px solid rgba(43, 43, 43, 0.2);
@@ -52,14 +52,14 @@
   display: flex;
   flex-direction: column;
 }
-.live-chat > form > input {
-  background-color: transparent;
+.live-chat-form > input {
+  background-color: white;
   border: none;
   height: 50px;
   outline: none;
   padding: 0rem 1rem;
 }
-.live-chat > form > button {
+.live-chat-form > button {
   border: none;
   border-top: 1px solid rgba(43, 43, 43, 0.1);
   height: 50px;
