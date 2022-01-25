@@ -74,7 +74,7 @@
   cursor: pointer;
   border-radius: 3rem;
   padding: .5rem 1rem;
-  padding-right: 1.8rem;
+  /* padding-right: 1.8rem; */
 }
 .user-profile-container:hover {
   background-color: rgba(180, 180, 180, 0.171);
@@ -158,5 +158,14 @@
   }
   .nav-user-info {
     display: none;
+  }
+  .nav-bar-list > li {
+    padding-right: 1rem;
+  }
+  .user-profile-container {
+    padding-right: 1rem;
+  }
+  .nav-avatar {
+    margin-right: 0rem;
   }
 }

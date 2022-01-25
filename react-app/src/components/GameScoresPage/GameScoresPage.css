@@ -5,3 +5,15 @@
 .game-scores-middle {
   grid-column: span 2;
 }
+@media only screen and (max-width: 1280px) {
+  .game-scores-page {
+    display: flex;
+  }
+  .game-scores-middle {
+    flex: 1 auto;
+    justify-content: center;
+  }
+  .scores-page-logo {
+    width: 96px;
+  }
+}

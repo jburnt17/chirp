@@ -32,12 +32,14 @@ function GameScoresPage() {
                 <div className="game-lobby-team-stats">
                   {teams.home && teams.home.team.name !== "Seattle Kraken" ? (
                     <img
+                    className="scores-page-logo"
                       width={128}
                       src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${teams.home?.team.id}.svg
 `}
                     />
                   ) : (
                     <img
+                    className="scores-page-kraken"
                       width={28}
                       src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${teams.home?.team.id}.svg
 `}
@@ -61,12 +63,14 @@ function GameScoresPage() {
                 <div className="game-lobby-team-stats">
                   {teams.away && teams.away.team.name !== "Seattle Kraken" ? (
                     <img
+                    className="scores-page-logo"
                       width={128}
                       src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${teams.away?.team.id}.svg
 `}
                     />
                   ) : (
                     <img
+                    className="scores-page-kraken"
                       width={28}
                       src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${teams.away?.team.id}.svg
 `}
