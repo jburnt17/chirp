@@ -80,7 +80,7 @@ function RosterPage() {
                     <img
                       className="player-image"
                       width={48}
-                      src={`https://cms.nhl.bamgrid.com/images/headshots/current/168x168/${player.person.id}@2x.jpg`}
+                      src={`http://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`}
                     />
                     <p>
                       {player.person.fullName},{" "}
