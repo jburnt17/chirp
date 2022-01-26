@@ -77,7 +77,7 @@ function RosterPage() {
                       width={48}
                       src={`http://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`}
                     />
-                    <p>{player.person.fullName}</p>
+                    <p>{player.person.fullName}, <span>{player.position.abbreviation}</span></p>
                   </div>
                   {showPlayer === player.person.id &&
                   player.position.abbreviation === "G" ? (
