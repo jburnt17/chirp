@@ -34,7 +34,7 @@ function StandingsPage() {
         <div className="standings">
           {standings.map((standing, i) => (
             <>
-              <h2>{standing.division.name}</h2>
+              <h2 className="division-name">{standing.division.name}</h2>
               <div className="standings-table">
                 <ul className="standings-row-names">
                   <li className="team-label">Team</li>

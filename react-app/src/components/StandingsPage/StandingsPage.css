@@ -15,6 +15,14 @@
   align-items: center;
   padding:2rem;
 }
+.division-name {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+  /* width: fit-content;
+  padding-right: .5rem; */
+  padding-bottom: .5rem;
+  text-align: center;
+}
 .standings-row-names {
   border-bottom: 1px solid rgba(0, 0, 0, 0.26);
   padding-bottom: .5rem;
@@ -67,6 +75,7 @@
   position: relative;
   justify-content: space-evenly;
   padding: .5rem;
+  margin-bottom: 1.5rem;
 }
 .seattle {
   margin-left: 1rem;
