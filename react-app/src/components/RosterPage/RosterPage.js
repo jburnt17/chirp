@@ -13,6 +13,7 @@ function RosterPage() {
 
   const [showRoster, setShowRoster] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [stats, setStats] = useState();
 
   const playerStats = async (playerId) => {
@@ -36,6 +37,7 @@ function RosterPage() {
   useEffect(() => {
     dispatch(getTeams());
     dispatch(getTodaysGames());
+    setIsLoaded(true);
   }, []);
 
   return (
@@ -44,6 +46,11 @@ function RosterPage() {
         <NavBar />
       </div>
       <div className="roster-middle">
+        <div className="middle-nav">
+          <div onClick={() => (document.documentElement.scrollTop = 0)}>
+            Rosters
+          </div>
+        </div>
         {teams.map((team) => (
           <div className="team-roster-container">
             <div
@@ -61,9 +68,7 @@ function RosterPage() {
                   team.link.split("/")[4]
                 }.svg`}
               />
-              <p>
-                {teams.find((team) => team.id === team.link.split("/")[4])}
-              </p>
+              <p>{teams.find((team) => team.id === team.link.split("/")[4])}</p>
             </div>
             {showRoster == team.link.split("/")[4] &&
               team.roster.map((player) => (
@@ -77,7 +82,10 @@ function RosterPage() {
                       width={48}
                       src={`http://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`}
                     />
-                    <p>{player.person.fullName}, <span>{player.position.abbreviation}</span></p>
+                    <p>
+                      {player.person.fullName},{" "}
+                      <span>{player.position.abbreviation}</span>
+                    </p>
                   </div>
                   {showPlayer === player.person.id &&
                   player.position.abbreviation === "G" ? (
