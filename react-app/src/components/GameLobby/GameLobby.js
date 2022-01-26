@@ -12,7 +12,6 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser, users }) {
 
   const handleDelete = (e) => {
     const lobbyId = e.target.className.split("-")[1];
-    console.log(lobbyId);
     dispatch(removeGame(lobbyId));
   };
 
@@ -110,7 +109,6 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser, users }) {
                     className="options-wrapper"
                     id={`option-${gameLobby.id}`}
                     onClick={(e) => {
-                      console.log(e.target);
                       setShowOptions(e.target.id?.split("-")[1]);
                     }}
                   ></div>

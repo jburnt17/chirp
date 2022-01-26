@@ -19,7 +19,6 @@ function RosterPage() {
     const response = await fetch(
       `https://statsapi.web.nhl.com/api/v1/people/${playerId}/stats?stats=statsSingleSeason&season=20212022`
     );
-    console.log("hello");
     let info = await response.json();
     info = info?.stats[0]?.splits[0]?.stat;
     setStats(info);
@@ -38,10 +37,6 @@ function RosterPage() {
     dispatch(getTeams());
     dispatch(getTodaysGames());
   }, []);
-
-  useEffect(() => {
-    console.log("stats =====>", stats);
-  }, [stats]);
 
   return (
     <div className="roster-page-body">
@@ -69,7 +64,6 @@ function RosterPage() {
               <p>
                 {teams.find((team) => team.id === team.link.split("/")[4])}
               </p>
-              {console.log(teams.find((team) => team.id === team.link.split("/")[4]))}
             </div>
             {showRoster == team.link.split("/")[4] &&
               team.roster.map((player) => (

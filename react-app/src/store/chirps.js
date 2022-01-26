@@ -78,8 +78,6 @@ export default function chirpReducer(state = {}, action) {
     }
     case REMOVE_CHIRP: {
       const newState = { ...state };
-      console.log("action", action);
-      console.log("action.payload", action.payload);
       delete newState[action.payload.id];
       return newState;
     }
