@@ -1,10 +1,9 @@
 import { UserIcon } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
-import LogoutButton from "../auth/LogoutButton";
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -46,7 +45,7 @@ const NavBar = () => {
           />
           <div className="nav-scores-link">Rosters</div>
         </li>
-        <li>
+        <li onClick={() => history.push("/standings")}>
           <img
             className="nav-icon"
             src="https://raw.githubusercontent.com/jburnt17/chirp/58e4af7c87d4fab131fbea0adfbc59caa7574aff/react-app/public/trophy2.svg"

@@ -76,3 +76,9 @@
   margin-right: 1rem;
   width: 64px;
 }
+.spinner-icon {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}

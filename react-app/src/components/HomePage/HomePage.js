@@ -19,7 +19,10 @@ function HomePage({users}) {
   const gameLobbiesObj = useSelector((state) => state.gameLobbies);
   const gameLobbies = Object.values(gameLobbiesObj);
 
-  useEffect(() => [dispatch(getTodaysGames())], []);
+  useEffect(() => {
+    (function () {document.documentElement.scrollTop = 0})()
+    dispatch(getTodaysGames())
+  }, []);
 
   useEffect(() => {
     dispatch(getGames());

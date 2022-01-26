@@ -11,6 +11,7 @@ import HomePage from "./components/HomePage/HomePage";
 import GameLobbyPage from "./components/GameLobbyPage/GameLobbyPage";
 import GameScoresPage from "./components/GameScoresPage/GameScoresPage";
 import RosterPage from "./components/RosterPage/RosterPage";
+import StandingsPage from "./components/StandingsPage/StandingsPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -61,6 +62,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/rosters" exact={true}>
           <RosterPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/standings" exact={true}>
+          <StandingsPage />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <HomePage users={users}/>

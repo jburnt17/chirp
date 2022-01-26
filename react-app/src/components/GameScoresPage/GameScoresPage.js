@@ -11,6 +11,7 @@ function GameScoresPage() {
   const gamesToday = Object.values(gamesTodayObj);
 
   useEffect(() => {
+    (function () {document.documentElement.scrollTop = 0})()
     dispatch(getTodaysGames());
   }, []);
 
