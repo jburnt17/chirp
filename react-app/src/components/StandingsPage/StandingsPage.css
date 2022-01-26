@@ -13,53 +13,61 @@
 .standings {
   width: 100%;
   align-items: center;
+  padding:2rem;
 }
 .standings-row-names {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+  padding-bottom: .5rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   list-style: none;
-  margin: .5rem 1.2rem;
 }
 .team-label {
   position: absolute;
-  left: 0;
+  left: .5rem;
 }
 .right-team-labels {
   display: flex;
   width: 300px;
   justify-content: space-evenly;
 }
-.right-team-labels > li {
-  margin: .1rem;
-}
-.standings-row-names > li {
-  margin: .1rem;
-}
 .standings-columns {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   list-style: none;
-  margin: .5rem 1.2rem;
+  height: 48px;
+}
+.standings-columns:hover {
+  background-color: rgba(0, 0, 0, 0.212);
 }
 .right-team-columns {
   display: flex;
   width: 300px;
   justify-content: space-evenly;
+  position: absolute;
+  right: 0;
+  margin-right: .4rem;
 }
 .team-column {
   display: flex;
   position: absolute;
-  left: 0;
-}
-.standings-columns > li {
-  margin: .1rem;
+  left: .5rem;
+  align-items: center;
 }
 .standings-table {
   display: flex;
   flex-direction: column;
-  background-color: gray;
-  width: 600px;
+  background-color: rgba(241, 241, 241, 0.808);
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  border-radius: 1rem;
+  width: 100%;
+  height: 550px;
   position: relative;
+  justify-content: space-evenly;
+  padding: .5rem;
+}
+.seattle {
+  margin-left: 1rem;
 }

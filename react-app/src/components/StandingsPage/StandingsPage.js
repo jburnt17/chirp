@@ -52,17 +52,18 @@ function StandingsPage() {
 
                 {standings[i].teamRecords.map((teams) => (
                   <div>
-                    <ol className="standings-columns">
+                    <ul className="standings-columns">
                       <div className="team-column">
                         {teams.team.name !== "Seattle Kraken" ? (
                           <img
-                            width={32}
+                            width={64}
                             src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${teams.team.id}.svg
 `}
                           />
                         ) : (
                           <img
-                            width={18}
+                            width={32}
+                            className="seattle"
                             src={`https://www-league.nhlstatic.com/images/logos/teams-20202021-light/${teams.team.id}.svg
 `}
                           />
@@ -79,7 +80,7 @@ function StandingsPage() {
                         <li>{teams.goalsAgainst}</li>
                         <li>{teams.streak.streakCode}</li>
                       </div>
-                    </ol>
+                    </ul>
                   </div>
                 ))}
               </div>
