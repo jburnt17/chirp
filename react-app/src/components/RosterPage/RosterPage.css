@@ -1,0 +1,78 @@
+/* LEFT  */
+.roster-page-body {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100vh;
+  position: relative;
+}
+.roster-left {
+  border-right: 1px solid rgba(59, 59, 59, 0.2);
+  display: flex;
+  justify-content: flex-end;
+  padding: 0rem 3rem;
+  z-index: 99;
+}
+
+/* MIDDLE  */
+.roster-middle {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  /* position: relative; */
+}
+
+/* RIGHT  */
+.roster-lobby-right {
+  border-left: 1px solid rgba(59, 59, 59, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  z-index: 99;
+}
+
+.team-roster-logo {
+  margin-left: 1rem;
+}
+.team-roster-container {
+  border-bottom: 1px solid rgba(59, 59, 59, 0.4);
+  padding: 1rem 0rem;
+}
+.team-header-container:hover {
+  cursor: pointer;
+}
+.player-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem;
+
+}
+.player-stats {
+  transition: all 1s ease-out;
+  padding: .5rem;
+}
+.player-stats > div {
+  padding: .5rem;
+  margin: .5rem;
+  background-color: rgba(59, 59, 59, 0.2);
+}
+
+.stats-player-info {
+  display: flex;
+}
+.player-container:nth-child(odd) {
+  background-color: rgba(226, 226, 226, 0.397);
+}
+.player-container:first-of-type {
+  border-top: 1px solid rgba(59, 59, 59, 0.274);
+}
+.player-container:hover {
+  background-color: rgba(59, 59, 59, 0.2);
+  cursor: pointer;
+}
+.player-image {
+  border-radius: 50%;
+  margin-right: 1rem;
+  width: 64px;
+}

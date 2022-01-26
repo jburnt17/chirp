@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./TodaysGames.css";
 
-function TodaysGames({ gamesToday }) {
+function TodaysGames() {
+  const gamesTodayObj = useSelector((state) => state.gamesToday);
+  const gamesToday = Object.values(gamesTodayObj);
   return (
     <>
       <div className="todays-games-container">

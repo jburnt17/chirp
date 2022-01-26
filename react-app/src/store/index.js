@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import chirpReducer from "./chirps";
 import gameReducer from "./games";
 import session from "./session";
+import teamsReducer from "./teams";
 import gamesTodayReducer from "./todaysGames";
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   gamesToday: gamesTodayReducer,
   gameLobbies: gameReducer,
   chirps: chirpReducer,
+  teams: teamsReducer,
 });
 
 let enhancer;

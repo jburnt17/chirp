@@ -1,6 +1,6 @@
 import { UserIcon } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
@@ -13,6 +13,7 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   const [showUserOptions, setShowUserOptions] = useState(false);
 
+
   const onLogout = async (e) => {
     await dispatch(logout());
   };
@@ -20,7 +21,7 @@ const NavBar = () => {
   return (
     <nav className="nav-bar-container">
       <ul className="nav-bar-list">
-        <li onClick={() => history.push('/')}>
+        <li onClick={() => history.push("/")}>
           <HomeIcon className="nav-icon" />
           <NavLink
             className="home-text"
@@ -31,19 +32,25 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        <li onClick={() => history.push('/scores')}>
+        <li onClick={() => history.push("/scores")}>
           <img
             className="nav-icon"
             src="https://raw.githubusercontent.com/jburnt17/chirp/3305c39195afaf760ea81d434ccfc9e92be32c34/react-app/public/hockey-sticks.svg"
           />
           <div className="nav-scores-link">Scores</div>
         </li>
-        <li>
-          <img className="nav-icon" src="https://raw.githubusercontent.com/jburnt17/chirp/58e4af7c87d4fab131fbea0adfbc59caa7574aff/react-app/public/medal.svg"/>
-          <div className="nav-scores-link">Stats</div>
+        <li onClick={() => history.push("/rosters")}>
+          <img
+            className="nav-icon"
+            src="https://raw.githubusercontent.com/jburnt17/chirp/58e4af7c87d4fab131fbea0adfbc59caa7574aff/react-app/public/medal.svg"
+          />
+          <div className="nav-scores-link">Rosters</div>
         </li>
         <li>
-          <img className="nav-icon" src="https://raw.githubusercontent.com/jburnt17/chirp/58e4af7c87d4fab131fbea0adfbc59caa7574aff/react-app/public/trophy2.svg"/>
+          <img
+            className="nav-icon"
+            src="https://raw.githubusercontent.com/jburnt17/chirp/58e4af7c87d4fab131fbea0adfbc59caa7574aff/react-app/public/trophy2.svg"
+          />
           <div className="nav-scores-link">Standings</div>
         </li>
         <li>
@@ -84,7 +91,9 @@ const NavBar = () => {
                 <p className="nav-email">{user.email}</p>
               </div>
             </div>
-            <button className="logout-button" onClick={onLogout}>Logout</button>
+            <button className="logout-button" onClick={onLogout}>
+              Logout
+            </button>
             <div className="triangle"></div>
           </div>
         )}
