@@ -1,3 +1,28 @@
+.error {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translateX(50%);
+  background-color: rgb(255, 53, 53);
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: .5rem;
+  animation: slide .2s ease-in-out;
+}
+@keyframes slide {
+  from {
+    padding: 0;
+  }
+
+  to {
+    padding: .5rem;
+  }
+}
+.error > p {
+  font-weight: 100;
+}
 .login-body {
   display: flex;
   justify-content: space-between;
@@ -39,6 +64,14 @@
   padding-left: .5rem;
   outline: none;
 }
+.login-input-error {
+  width: 250px;
+  height: 3rem;
+  padding-left: .5rem;
+  outline: none;
+  border: 1px solid rgb(255, 105, 105);
+  border-radius: 3px;
+}
 .login-label {
   position: absolute;
   left: 10px;
@@ -48,13 +81,34 @@
   color: rgba(0, 0, 0, 0.726);
   pointer-events: none;
 }
+.login-label-error {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all .2s ease;
+  color: rgb(255, 105, 105);
+  pointer-events: none;
+}
 .login-input:focus ~ .login-label {
   font-size: 12px;
   padding: 0rem 2px;
   top: 0;
   background-color: #fdfdfd;
 }
+.login-input-error:focus ~ .login-label-error {
+  font-size: 12px;
+  padding: 0rem 2px;
+  top: 0;
+  background-color: #fdfdfd;
+}
 .login-input:valid ~ .login-label {
+  font-size: 12px;
+  padding: 0rem 2px;
+  top: 0;
+  background-color: #fdfdfd;
+}
+.login-input-error:valid ~ .login-label-error {
   font-size: 12px;
   padding: 0rem 2px;
   top: 0;

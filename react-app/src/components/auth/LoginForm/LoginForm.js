@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { login } from "../../../store/session";
@@ -8,6 +8,7 @@ const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showNot, setShowNot] = useState(false);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -28,12 +29,25 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  useEffect(() => {
+    setShowNot(true)
+    setTimeout(() => {
+      setShowNot(false)
+    }, 4000)
+  }, [errors])
+
   if (user) {
     return <Redirect to="/" />;
   }
 
+
   return (
     <div className="login-body">
+      {showNot && errors.length ?(
+        <div id="error" className="error">
+          <p>Invalid email or password</p>
+        </div>
+      ) : null}
       <video className="left-login" muted autoPlay loop>
         <source
           className="login-image"
@@ -43,34 +57,35 @@ const LoginForm = () => {
       <div className="right-login">
         <form className="login-form" onSubmit={onLogin}>
           <h3 className="login-title">Sign in to Chirp</h3>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
           <div className="login-input-wrapper">
             <input
-              className="login-input"
+              className={!errors.length ? `login-input` : `login-input-error`}
               name="email"
               type="text"
               value={email}
               onChange={updateEmail}
               required={true}
             />
-            <label className="login-label" htmlFor="email">
+            <label
+              className={!errors.length ? `login-label` : `login-label-error`}
+              htmlFor="email"
+            >
               Email
             </label>
           </div>
           <div className="login-input-wrapper">
             <input
-              className="login-input"
+              className={!errors.length ? `login-input` : `login-input-error`}
               name="password"
               type="password"
               value={password}
               onChange={updatePassword}
               required={true}
             />
-            <label className="login-label" htmlFor="password">
+            <label
+              className={!errors.length ? `login-label` : `login-label-error`}
+              htmlFor="password"
+            >
               Password
             </label>
           </div>
