@@ -153,11 +153,18 @@
   color: rgb(73, 73, 255);
   cursor: pointer;
 }
+.error-label {
+  font-size: .8rem;
+  margin-left: .1rem;
+  margin-top: .1rem;
+  color: rgb(255, 105, 105);
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  border: 1px solid rgba(48, 48, 48, 0.712);
+  border-width: 1px;
   border-radius: 3px;
   -webkit-box-shadow: 0 0 0px 1000px white inset;
+  box-shadow: 0 0 0px 1000px white inset;
   transition: background-color 5000s ease-in-out 0s;
 }
