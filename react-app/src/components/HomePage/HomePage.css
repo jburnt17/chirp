@@ -26,7 +26,7 @@
   top: 0;
   display: flex;
   align-items: center;
-  z-index: 100;
+  z-index: 1;
 }
 .middle-nav > div {
   margin-left: 1rem;
@@ -44,7 +44,7 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  z-index: 111;
+  z-index: 1;
 }
 @media only screen and (max-width: 1280px) {
   .home-page-body {

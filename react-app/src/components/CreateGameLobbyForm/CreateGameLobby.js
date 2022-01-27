@@ -1,16 +1,19 @@
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { createGame } from "../../store/games";
 import "./CreateGameLobby.css";
 
 function CreateGameLobby({ gamesToday }) {
   const [gameOption, setGameOption] = useState(0);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createGame(gameOption));
+    history.push("/");
   };
 
   return (
@@ -34,7 +37,7 @@ function CreateGameLobby({ gamesToday }) {
               </option>
             ))}
           </select>
-        <ChevronDownIcon className="select-arrow"/>
+          <ChevronDownIcon className="select-arrow" />
         </div>
         <button className="game-lobby-form-button">Submit</button>
       </form>

@@ -1,9 +1,9 @@
-import { UserIcon } from "@heroicons/react/outline";
-import { HomeIcon } from "@heroicons/react/solid";
-import React, { useState } from "react";
+import { HomeIcon, XIcon } from "@heroicons/react/solid";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
+import CreateLobbyModal from "../CreateLobbyModal/CreateLobbyModal";
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -11,7 +11,13 @@ const NavBar = () => {
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const [showUserOptions, setShowUserOptions] = useState(false);
-
+  const [showModal, setShowModal] = useState(false);
+  const modal = document.querySelector(".nav-lobby-modal");
+  useEffect(() => {
+    modal?.addEventListener("click", () => {
+      console.log("hello")
+    })
+  }, [modal])
 
   const onLogout = async (e) => {
     await dispatch(logout());
@@ -19,6 +25,12 @@ const NavBar = () => {
 
   return (
     <nav className="nav-bar-container">
+      {showModal && (
+        <div className="nav-lobby-modal">
+          <CreateLobbyModal />
+          <XIcon className="x-icon-modal" onClick={() => setShowModal(false)} />
+        </div>
+      )}
       <ul className="nav-bar-list">
         <li onClick={() => history.push("/")}>
           <HomeIcon className="nav-icon" />
@@ -52,18 +64,9 @@ const NavBar = () => {
           />
           <div className="nav-scores-link">Standings</div>
         </li>
-        <li>
-          <UserIcon className="nav-icon" />
-          <NavLink
-            className="users"
-            to="/users"
-            exact={true}
-            activeClassName="active"
-          >
-            Users
-          </NavLink>
-        </li>
-        <button className="nav-lobby-button">Create Lobby</button>
+        <button className="nav-lobby-button" onClick={() => setShowModal(true)}>
+          Create Lobby
+        </button>
       </ul>
       <div
         className="user-profile-container"
