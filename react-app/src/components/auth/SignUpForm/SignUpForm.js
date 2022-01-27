@@ -17,7 +17,7 @@ const SignUpForm = () => {
     const errors = [];
     if (password !== repeatPassword) errors.push("Passwords do not match.");
     setErrors([...errors]);
-  }, [repeatPassword]);
+  }, [email, username, repeatPassword]);
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -182,12 +182,12 @@ const SignUpForm = () => {
               </span>
             </p>
           </div>
+        </form>
           <div className="info-links">
           <p>Built by Jared Burnett:</p>
-          <img src="github-square-brands.svg" width={18} onClick={() => window.location.href = "https://github.com/jburnt17"}/>
-          <img src="linkedin-brands.svg" width={18} onClick={() => window.location.href = "https://www.linkedin.com/in/jared-burnett-36a327225/"}/>
+          <img src="https://raw.githubusercontent.com/jburnt17/chirp/f55114705554544ed133f8c938946b43da39c1fb/react-app/public/github-square-brands.svg" width={18} onClick={() => window.location.href = "https://github.com/jburnt17"}/>
+          <img src="https://raw.githubusercontent.com/jburnt17/chirp/f55114705554544ed133f8c938946b43da39c1fb/react-app/public/linkedin-brands.svg" width={18} onClick={() => window.location.href = "https://www.linkedin.com/in/jared-burnett-36a327225/"}/>
         </div>
-        </form>
       </div>
     </div>
   );
