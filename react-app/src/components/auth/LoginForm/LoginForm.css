@@ -159,6 +159,29 @@
   margin-top: .1rem;
   color: rgb(255, 105, 105);
 }
+.info-links {
+  position: absolute;
+  align-items: center;
+  bottom: 2%;
+  right: 2%;
+  display: flex;
+}
+.info-links > p {
+  font-size: .9rem;
+  font-weight: 100;
+  margin-right: .25rem;
+}
+.info-links > img {
+  margin: 0rem .25rem;
+  cursor: pointer;
+  transition: all .1s ease-out;
+}
+.info-links > img:hover {
+  transform: scale(1.06);
+}
+
+
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {

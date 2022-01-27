@@ -182,6 +182,11 @@ const SignUpForm = () => {
               </span>
             </p>
           </div>
+          <div className="info-links">
+          <p>Built by Jared Burnett:</p>
+          <img src="github-square-brands.svg" width={18} onClick={() => window.location.href = "https://github.com/jburnt17"}/>
+          <img src="linkedin-brands.svg" width={18} onClick={() => window.location.href = "https://www.linkedin.com/in/jared-burnett-36a327225/"}/>
+        </div>
         </form>
       </div>
     </div>

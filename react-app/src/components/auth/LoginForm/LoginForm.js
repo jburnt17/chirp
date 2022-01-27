@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { login } from "../../../store/session";
 import "./LoginForm.css";
 
@@ -104,6 +104,11 @@ const LoginForm = () => {
             </p>
           </div>
         </form>
+        <div className="info-links">
+          <p>Built by Jared Burnett:</p>
+          <img src="github-square-brands.svg" width={18} onClick={() => window.location.href = "https://github.com/jburnt17"}/>
+          <img src="linkedin-brands.svg" width={18} onClick={() => window.location.href = "https://www.linkedin.com/in/jared-burnett-36a327225/"}/>
+        </div>
       </div>
     </div>
   );
