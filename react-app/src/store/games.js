@@ -1,3 +1,4 @@
+import date from "date-and-time";
 const ADD_GAME = "games/ADD_GAME";
 const LOAD_GAMES = "games/LOAD_GAMES";
 const DELETE_GAME = "games/DELETE_GAME";
@@ -51,6 +52,15 @@ export const createGame = (game_number) => async (dispatch) => {
   }
 };
 
+const handleTime = (postDate) => {
+  const date1 = new Date(postDate)
+  const date2 = new Date()
+  const hour = new Date(date.subtract(date2, date1).toMilliseconds()).getHours()
+  if (hour >= 24) {
+    return true
+  } return false
+};
+
 export default function gameReducer(state = {}, action) {
   switch (action.type) {
     case ADD_GAME: {
@@ -59,7 +69,11 @@ export default function gameReducer(state = {}, action) {
     }
     case LOAD_GAMES: {
       const newState = { ...state };
-      action.payload.games?.forEach((game) => (newState[game.id] = game));
+      action.payload.games?.forEach((game) => {
+        if (handleTime(game.date)) delete newState[game.id];
+        else (newState[game.id] = game)
+      })
+      // action.payload.games?.forEach((game) => (newState[game.id] = game));
       return newState;
     }
     case DELETE_GAME: {
