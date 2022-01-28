@@ -4,19 +4,12 @@ import { DotsHorizontalIcon } from "@heroicons/react/outline";
 import "./GameLobby.css";
 import { removeGame } from "../../store/games";
 import { useHistory } from "react-router-dom";
+import date from "date-and-time";
 
 function GameLobby({ gameLobbies, gamesToday }) {
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('/api/users/');
-      const responseData = await response.json();
-      setUsers(responseData.users);
-    }
-    fetchData();
-  }, []);
-  
+
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
@@ -27,13 +20,37 @@ function GameLobby({ gameLobbies, gamesToday }) {
     dispatch(removeGame(lobbyId));
   };
 
+  const handleTime = (postDate) => {
+    const date1 = new Date(postDate)
+    const date2 = new Date()
+    const hour = new Date(date.subtract(date2, date1).toMilliseconds()).getHours()
+    if (hour === 0) {
+      const minutes = new Date(date.subtract(date2, date1).toMilliseconds()).getMinutes()
+      return minutes + "m";
+    }
+    return hour + "h";
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/api/users/");
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
+  
   return (
     <div>
       {gameLobbies.map((gameLobby, i) => (
         <div className="game-lobby">
           <div className="game-lobby-user-info">
             <img src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg" />
-            <p>{users && users.find((user) => user.id === gameLobby.user_id)?.username}</p>
+            <p>
+              {users &&
+                users.find((user) => user.id === gameLobby.user_id)?.username}
+            </p>
+            <div className="user-post-time">• {handleTime(gameLobby.date)}</div>
           </div>
           <div
             className="schedule-container"
@@ -102,7 +119,10 @@ function GameLobby({ gameLobbies, gamesToday }) {
                     >
                       Delete
                     </button>
-                    <button id="cancel-button" onClick={() => setShowOptions(false)}>
+                    <button
+                      id="cancel-button"
+                      onClick={() => setShowOptions(false)}
+                    >
                       Cancel
                     </button>
                   </div>
