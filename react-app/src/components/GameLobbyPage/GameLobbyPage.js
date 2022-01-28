@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { DotsHorizontalIcon, PaperAirplaneIcon, XIcon } from "@heroicons/react/solid";
+import {
+  DotsHorizontalIcon,
+  HeartIcon,
+  PaperAirplaneIcon,
+  XIcon,
+} from "@heroicons/react/solid";
+import { HeartIcon as UnlikedIcon } from "@heroicons/react/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getGames } from "../../store/games";
@@ -15,6 +21,7 @@ import TodaysGames from "../TodaysGames/TodaysGames";
 import "./GameLobbyPage.css";
 import { XCircleIcon } from "@heroicons/react/outline";
 import Test from "../LiveChat/LiveChat";
+import { fetchLikes, removeLike, setLike } from "../../store/likes";
 
 function GameLobbyPage({ users }) {
   const dispatch = useDispatch();
@@ -29,10 +36,15 @@ function GameLobbyPage({ users }) {
   const gamesTodayObj = useSelector((state) => state.gamesToday);
   const gameLobbiesObj = useSelector((state) => state.gameLobbies);
   const gameLobbyChirpsObj = useSelector((state) => state.chirps);
+  const likesObj = useSelector((state) => state.likes);
 
   const gamesToday = Object.values(gamesTodayObj);
   const gameLobbies = Object.values(gameLobbiesObj);
   const unfilteredChirps = Object.values(gameLobbyChirpsObj);
+  const userLikes = Object.values(likesObj).filter(
+    (like) => like.user_id === sessionUser.id
+  );
+
   const gameLobbyChirps = unfilteredChirps.filter(
     (chirp) => +chirp.game_id === +gameId
   );
@@ -45,7 +57,7 @@ function GameLobbyPage({ users }) {
 
   const handleEditState = (content, chirpId) => {
     const textArea = document.querySelector("#chirp-text-area");
-    setShowOptions(false)
+    setShowOptions(false);
     setEditChirpId(chirpId);
     setContent(content);
     setEditState(true);
@@ -73,6 +85,13 @@ function GameLobbyPage({ users }) {
     }
   };
 
+  const likeCheck = (chirpId) => {
+    for (let i = 0; i < userLikes.length; i++) {
+      if (userLikes[i].chirp_id === chirpId) return true;
+    }
+    return false;
+  };
+
   const handleEditChirp = (e) => {
     e.preventDefault();
     dispatch(updateChirp(gameId, editChirpId, content));
@@ -81,6 +100,7 @@ function GameLobbyPage({ users }) {
   };
 
   useEffect(() => {
+    dispatch(fetchLikes());
     dispatch(getGames());
     dispatch(getTodaysGames());
     dispatch(loadChirps(gameId));
@@ -182,6 +202,20 @@ function GameLobbyPage({ users }) {
                             .username}
                       </p>
                       <div className="chirp-content">{chirp.content}</div>
+                      {!likeCheck(chirp.id) ? (
+                        <UnlikedIcon
+                          onClick={() => dispatch(setLike(chirp.id))}
+                          className="heart-icon"
+                          width={24}
+                          cursor={"pointer"}
+                        />
+                      ) : (
+                        <HeartIcon
+                          onClick={() => dispatch(removeLike(chirp.id))}
+                          className="heart-icon liked-icon"
+                          width={24}
+                        />
+                      )}
                     </div>
                   </div>
                   {showOptions == chirp.id && (
@@ -196,7 +230,7 @@ function GameLobbyPage({ users }) {
                           Delete
                         </button>
                         <button
-                        id="lobby-edit-button"
+                          id="lobby-edit-button"
                           className="edit-chirp-button"
                           onClick={() =>
                             handleEditState(chirp.content, chirp.id)
@@ -205,7 +239,10 @@ function GameLobbyPage({ users }) {
                           Edit
                         </button>
                       </div>
-                      <XIcon onClick={() => setShowOptions(false)} className="close-chirp-options"/>
+                      <XIcon
+                        onClick={() => setShowOptions(false)}
+                        className="close-chirp-options"
+                      />
                     </div>
                   )}
                   {chirp.user_id === sessionUser.id && (

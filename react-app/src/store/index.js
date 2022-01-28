@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import chirpReducer from "./chirps";
 import gameReducer from "./games";
+import likesReducer from "./likes";
 import session from "./session";
 import standingsReducer from "./standings";
 import teamsReducer from "./teams";
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   chirps: chirpReducer,
   teams: teamsReducer,
   standings: standingsReducer,
+  likes: likesReducer,
 });
 
 let enhancer;

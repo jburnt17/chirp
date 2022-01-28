@@ -11,6 +11,7 @@ class Chirp(db.Model):
 
   user = db.relationship('User', back_populates="chirps")
   game = db.relationship('Game', back_populates="chirps")
+  like = db.relationship('Like', back_populates="chirp", cascade="all,delete")
 
   def to_dict(self):
     return {

@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
 
     games = db.relationship('Game', back_populates="user")
     chirps = db.relationship('Chirp', back_populates="user")
+    like = db.relationship('Like', back_populates="user")
 
     @property
     def password(self):
