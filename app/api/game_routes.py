@@ -6,7 +6,7 @@ import pytz
 from datetime import datetime
 
 game_routes = Blueprint('games', __name__)
-tz = pytz.timezone("America/Toronto")
+tz = pytz.timezone("America/New_York")
 
 @game_routes.route('')
 @login_required
