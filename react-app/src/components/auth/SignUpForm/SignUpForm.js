@@ -45,14 +45,6 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(errors);
-    console.log(errors[0]?.includes("username : Username is already in use."));
-    console.log(
-      errors[0]?.includes("email : Email address is already in use.")
-    );
-  }, [errors]);
-
   if (user) {
     return <Redirect to="/" />;
   }

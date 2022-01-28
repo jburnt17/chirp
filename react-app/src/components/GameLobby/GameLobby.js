@@ -1,13 +1,25 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { DotsHorizontalIcon } from "@heroicons/react/outline";
 import "./GameLobby.css";
 import { removeGame } from "../../store/games";
 import { useHistory } from "react-router-dom";
 
-function GameLobby({ gameLobbies, gamesToday, sessionUser, users }) {
+function GameLobby({ gameLobbies, gamesToday }) {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
+  
   const dispatch = useDispatch();
   const history = useHistory();
+  const sessionUser = useSelector((state) => state.session.user);
   const [showOptions, setShowOptions] = useState("");
 
   const handleDelete = (e) => {
@@ -21,9 +33,7 @@ function GameLobby({ gameLobbies, gamesToday, sessionUser, users }) {
         <div className="game-lobby">
           <div className="game-lobby-user-info">
             <img src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg" />
-            <p>{users &&
-                          users.find((user) => user.id === gameLobby.user_id)
-                            .username}</p>
+            <p>{users && users.find((user) => user.id === gameLobby.user_id)?.username}</p>
           </div>
           <div
             className="schedule-container"

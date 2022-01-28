@@ -8,7 +8,7 @@ import NavBar from "../NavBar/NavBar";
 import TodaysGames from "../TodaysGames/TodaysGames";
 import "./HomePage.css";
 
-function HomePage({users}) {
+function HomePage({ users }) {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -20,8 +20,10 @@ function HomePage({users}) {
   const gameLobbies = Object.values(gameLobbiesObj);
 
   useEffect(() => {
-    (function () {document.documentElement.scrollTop = 0})()
-    dispatch(getTodaysGames())
+    (function () {
+      document.documentElement.scrollTop = 0;
+    })();
+    dispatch(getTodaysGames());
   }, []);
 
   useEffect(() => {
@@ -43,7 +45,6 @@ function HomePage({users}) {
           </div>
           <CreateGameLobby gamesToday={gamesToday} />
           <GameLobby
-          users={users}
             className="game-lobby"
             gameLobbies={gameLobbies}
             gamesToday={gamesToday}
