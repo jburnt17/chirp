@@ -39,7 +39,7 @@ function GameLobby({ gameLobbies, gamesToday }) {
     }
     fetchData();
   }, []);
-  
+
   return (
     <div>
       {gameLobbies.map((gameLobby, i) => (
@@ -51,6 +51,8 @@ function GameLobby({ gameLobbies, gamesToday }) {
                 users.find((user) => user.id === gameLobby.user_id)?.username}
             </p>
             <div className="user-post-time">• {handleTime(gameLobby.date)}</div>
+            <p>lobby creation = {gameLobby.date}</p>
+            <p>now = {new Date().toString()}</p>
           </div>
           <div
             className="schedule-container"
