@@ -48,7 +48,6 @@ def delete_game(id):
 def add_chirp(id):
   form = CreateChirpForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  print('this is the date', str(test))
 
   if form.validate_on_submit():
     content = form.data['content']
