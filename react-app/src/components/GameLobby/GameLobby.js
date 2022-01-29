@@ -20,9 +20,10 @@ function GameLobby({ gameLobbies, gamesToday }) {
     dispatch(removeGame(lobbyId));
   };
 
+
   const handleTime = (postDate) => {
-    const offset = new Date().getTimezoneOffset();
-    const date1 = new Date(postDate + offset)
+    const newDate = date.format(new Date(postDate), 'Z')
+    const date1 = new Date(newDate)
     const date2 = new Date()
     console.log(date1)
     const hour = new Date(date.subtract(date2, date1).toMilliseconds()).getHours()
@@ -46,6 +47,7 @@ function GameLobby({ gameLobbies, gamesToday }) {
     <div>
       {gameLobbies.map((gameLobby, i) => (
         <div className="game-lobby">
+          {/* <p>{new Date(gameLobby.date).getTime()}</p> */}
           <div className="game-lobby-user-info">
             <img src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg" />
             <p>
