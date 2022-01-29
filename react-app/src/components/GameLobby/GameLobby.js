@@ -22,8 +22,7 @@ function GameLobby({ gameLobbies, gamesToday }) {
 
 
   const handleTime = (postDate) => {
-    const newDate = date.format(new Date(postDate), 'Z')
-    const date1 = new Date(newDate)
+    const date1 = new Date(postDate)
     const date2 = new Date()
     console.log(date1)
     const hour = new Date(date.subtract(date2, date1).toMilliseconds()).getHours()
