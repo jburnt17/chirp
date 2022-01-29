@@ -26,9 +26,11 @@ function GameLobby({ gameLobbies, gamesToday }) {
     // const date1 = new Date(postDate)
     const date1 = moment.utc(postDate).local()._d
     const date2 = moment.utc().local()._d
-    const hour = new Date(date.subtract(date2, date1).toMilliseconds()).getHours()
+    const difference = new Date(date.subtract(date2, date1).toMilliseconds())
+    const hour = (moment.utc(difference).local()._d).getHours()
     if (hour === 0) {
-      const minutes = new Date(date.subtract(date2, date1).toMilliseconds()).getMinutes()
+      const diffMinutes = new Date(date.subtract(date2, date1).toMilliseconds())
+      const minutes = (moment.utc(diffMinutes).local()._d).getMinutes()
       return minutes + "m";
     }
     return hour + "h";
