@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Game, Chirp, db
 from app.forms import CreateGameForm, CreateChirpForm, EditChirpForm
 import pytz
+from tzlocal import get_localzone
 from datetime import datetime
 
 game_routes = Blueprint('games', __name__)
@@ -19,7 +20,8 @@ def load_games():
 def add_game():
   form = CreateGameForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  current_date = datetime.now(tz)
+  now = datetime.now()
+  current_date = now.astimezone(get_localzone())
 
   if form.validate_on_submit():
     game_number = form.data['game_number']
