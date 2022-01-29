@@ -5,6 +5,7 @@ import "./GameLobby.css";
 import { removeGame } from "../../store/games";
 import { useHistory } from "react-router-dom";
 import date from "date-and-time";
+import moment from 'moment';
 
 function GameLobby({ gameLobbies, gamesToday }) {
   const [users, setUsers] = useState([]);
@@ -22,9 +23,9 @@ function GameLobby({ gameLobbies, gamesToday }) {
 
 
   const handleTime = (postDate) => {
-    const date1 = new Date(postDate)
-    const date2 = new Date()
-    console.log(date1)
+    // const date1 = new Date(postDate)
+    const date1 = moment.utc(postDate).local()._d
+    const date2 = moment.utc().local()._d
     const hour = new Date(date.subtract(date2, date1).toMilliseconds()).getHours()
     if (hour === 0) {
       const minutes = new Date(date.subtract(date2, date1).toMilliseconds()).getMinutes()
