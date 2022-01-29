@@ -21,8 +21,10 @@ function GameLobby({ gameLobbies, gamesToday }) {
   };
 
   const handleTime = (postDate) => {
-    const date1 = new Date(postDate)
+    const offset = new Date().getTimezoneOffset();
+    const date1 = new Date(postDate + offset)
     const date2 = new Date()
+    console.log(date1)
     const hour = new Date(date.subtract(date2, date1).toMilliseconds()).getHours()
     if (hour === 0) {
       const minutes = new Date(date.subtract(date2, date1).toMilliseconds()).getMinutes()
