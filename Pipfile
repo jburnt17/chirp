@@ -29,6 +29,7 @@ psycopg2 = "*"
 flask-socketio = "*"
 eventlet = "==0.30.2"
 pytz = "*"
+tzlocal = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
