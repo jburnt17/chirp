@@ -34,8 +34,7 @@ function GameLobby({ gameLobbies, gamesToday }) {
     //   return minutes + "m";
     // }
     // return hour + "h";
-    const time = moment(postDate).fromNow().split(' ');
-    return time[0] + time[1].split("")[0]
+    return moment(postDate).fromNow()
 
   };
 
