@@ -34,7 +34,8 @@ function GameLobby({ gameLobbies, gamesToday }) {
     //   return minutes + "m";
     // }
     // return hour + "h";
-    return (moment(postDate).fromNow())
+    const time = moment(postDate).fromNow().split(' ');
+    return time[0] + time[1].split("")[0]
 
   };
 
@@ -59,8 +60,6 @@ function GameLobby({ gameLobbies, gamesToday }) {
                 users.find((user) => user.id === gameLobby.user_id)?.username}
             </p>
             <div className="user-post-time">• {handleTime(gameLobby.date)}</div>
-            <p>lobby creation = {gameLobby.date}</p>
-            <p>now = {new Date().toString()}</p>
           </div>
           <div
             className="schedule-container"
