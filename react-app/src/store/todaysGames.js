@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const LOAD_GAMES = "teams/LOAD_GAMES";
 
 const loadGames = (games) => ({
@@ -6,12 +8,9 @@ const loadGames = (games) => ({
 });
 
 export const getTodaysGames = () => async (dispatch) => {
-  const date = new Date();
-  const offset = date.getTimezoneOffset();
-  const newDate = new Date(date.getTime() - offset * 60 * 1000);
-  const final = newDate.toISOString().split("T")[0].split("-");
+  const date = moment().format("YYYY MM D").split(" ")
   const response = await fetch(
-    `https://statsapi.web.nhl.com/api/v1/schedule?date=${final[0]}-${final[1]}-${final[2]}`
+    `https://statsapi.web.nhl.com/api/v1/schedule?date=${date[0]}-${date[1]}-${date[2]}`
   );
   const games = await response.json();
   dispatch(loadGames(games));

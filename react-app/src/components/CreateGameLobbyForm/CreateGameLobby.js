@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { createGame } from "../../store/games";
 import "./CreateGameLobby.css";
 
-function CreateGameLobby({ gamesToday }) {
+function CreateGameLobby({ gamesToday, isDarkMode }) {
   const [gameOption, setGameOption] = useState(0);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -17,10 +17,10 @@ function CreateGameLobby({ gamesToday }) {
   };
 
   return (
-    <div className="game-lobby-form-con">
+    <div className={isDarkMode ? "game-lobby-form-con-dark" : "game-lobby-form-con"}>
       <div className="game-lobby-form-header">
-        <img src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg" />
-        <p>Start hosting your lobby</p>
+        <img className={isDarkMode ? "game-lobby-ava-dark" : "game-lobby-ava"} src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg" />
+        <p className={isDarkMode ? "game-lobby-title-dark" : "game-lobby-title"}>Start hosting your lobby</p>
       </div>
 
       <form
@@ -29,7 +29,7 @@ function CreateGameLobby({ gamesToday }) {
         onChange={(e) => setGameOption(e.target.value)}
       >
         <div className="select-wrapper">
-          <select>
+          <select className={isDarkMode ? "select-menu-dark" : "select-menu"}>
             {gamesToday.map((gameToday, i) => (
               <option value={i}>
                 {gameToday.teams.away.team.name} vs{" "}
@@ -39,7 +39,7 @@ function CreateGameLobby({ gamesToday }) {
           </select>
           <ChevronDownIcon className="select-arrow" />
         </div>
-        <button className="game-lobby-form-button">Submit</button>
+        <button className={isDarkMode ? "game-lobby-form-button-dark" : "game-lobby-form-button"}>Submit</button>
       </form>
     </div>
   );

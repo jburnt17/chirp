@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getDarkMode } from "../../store/session";
 import { getTodaysGames } from "../../store/todaysGames";
 import NavBar from "../NavBar/NavBar";
 import TodaysGames from "../TodaysGames/TodaysGames";
@@ -12,6 +13,7 @@ function GameScoresPage() {
 
   useEffect(() => {
     (function () {document.documentElement.scrollTop = 0})()
+    dispatch(getDarkMode());
     dispatch(getTodaysGames());
   }, []);
 

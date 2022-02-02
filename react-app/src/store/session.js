@@ -1,6 +1,25 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const SET_DARK_MODE = 'session/SET_DARK_MODE';
+const LOAD_DARK_MODE = 'session/LOAD_DARK_MODE';
+
+const loadDarkMode = () => ({
+  type: LOAD_DARK_MODE,
+})
+
+export const getDarkMode = () => async(dispatch) => {
+  dispatch(loadDarkMode());
+}
+
+const setDarkMode = (isSet) => ({
+  type:SET_DARK_MODE,
+  payload: isSet,
+})
+
+export const darkMode = (choice) => async (dispatch) => {
+  dispatch(setDarkMode(choice));
+};
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,7 +30,7 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
-const initialState = { user: null };
+const initialState = { user: null, darkMode: false };
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -24,7 +43,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -40,8 +59,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -65,6 +84,7 @@ export const logout = () => async (dispatch) => {
   });
 
   if (response.ok) {
+    setDarkMode(false);
     dispatch(removeUser());
   }
 };
@@ -82,7 +102,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
       password,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -103,6 +123,12 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case SET_DARK_MODE:
+      const isDark = action.payload
+      return {...state, darkMode: isDark}
+    case LOAD_DARK_MODE:
+      console.log("testtt =>", state.darkMode);
+      return {...state };
     default:
       return state;
   }

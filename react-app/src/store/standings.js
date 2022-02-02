@@ -15,7 +15,6 @@ export default function standingsReducer(state = {}, action) {
   switch (action.type) {
     case LOAD_STANDINGS: {
       const newState = {};
-      console.log('action.payload ===>', action.payload.records)
       action.payload.records.forEach((division, i) => newState[i] = division)
       return newState;
     }

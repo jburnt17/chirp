@@ -2,12 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "./TodaysGames.css";
 
-function TodaysGames() {
+function TodaysGames({isDarkMode}) {
   const gamesTodayObj = useSelector((state) => state.gamesToday);
   const gamesToday = Object.values(gamesTodayObj);
   return (
     <>
-      <div className="todays-games-container">
+      <div className={isDarkMode ? "todays-games-container-dark" : "todays-games-container"}>
     <p>Todays Games</p>
         {gamesToday.map((gameToday) => (
           <div>

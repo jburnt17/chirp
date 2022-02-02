@@ -4,12 +4,10 @@ import { DotsHorizontalIcon } from "@heroicons/react/outline";
 import "./GameLobby.css";
 import { removeGame } from "../../store/games";
 import { useHistory } from "react-router-dom";
-import date from "date-and-time";
-import moment from 'moment';
+import moment from "moment";
 
-function GameLobby({ gameLobbies, gamesToday }) {
+function GameLobby({ gameLobbies, gamesToday, isDarkMode }) {
   const [users, setUsers] = useState([]);
-
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -21,21 +19,8 @@ function GameLobby({ gameLobbies, gamesToday }) {
     dispatch(removeGame(lobbyId));
   };
 
-
   const handleTime = (postDate) => {
-    // // const date1 = new Date(postDate)
-    // const date1 = moment.utc(postDate)._d
-    // const date2 = moment.utc()._d
-    // const difference = new Date(date.subtract(date2, date1).toMilliseconds())
-    // const hour = (moment.utc(difference)._d).getHours()
-    // if (hour === 0) {
-    //   const diffMinutes = new Date(date.subtract(date2, date1).toMilliseconds())
-    //   const minutes = (moment.utc(diffMinutes)._d).getMinutes()
-    //   return minutes + "m";
-    // }
-    // return hour + "h";
-    return moment(postDate).fromNow()
-
+    return moment(postDate).fromNow();
   };
 
   useEffect(() => {
@@ -52,24 +37,36 @@ function GameLobby({ gameLobbies, gamesToday }) {
       {gameLobbies.map((gameLobby, i) => (
         <div className="game-lobby">
           {/* <p>{new Date(gameLobby.date).getTime()}</p> */}
-          <div className="game-lobby-user-info">
+          <div
+            className={
+              isDarkMode ? "game-lobby-user-info-dark" : "game-lobby-user-info"
+            }
+          >
             <img src="https://raw.githubusercontent.com/jburnt17/chirp/80e5df043874ef4ce9a3dd3398a99d070d63fdf5/react-app/public/user-avatar.svg" />
             <p>
               {users &&
                 users.find((user) => user.id === gameLobby.user_id)?.username}
             </p>
-            <div className="user-post-time">• {handleTime(gameLobby.date)}</div>
+            <div
+              className={isDarkMode ? "user-post-time-dark" : "user-post-time"}
+            >
+              • {handleTime(gameLobby.date)}
+            </div>
           </div>
           <div
             className="schedule-container"
             onClick={(e) => {
-              (e.target.className === "game-lobby-con" ||
+              (e.target.className === "game-lobby-con-dark" ||
+                e.target.className === "lobby-info-dark" ||
+                e.target.className === "game-lobby-con" ||
                 e.target.className === "lobby-info") &&
                 history.push(`/games/${gameLobby.game_number}/${gameLobby.id}`);
             }}
           >
-            <div className="game-lobby-con">
-              <div className="lobby-info">
+            <div
+              className={isDarkMode ? "game-lobby-con-dark" : "game-lobby-con"}
+            >
+              <div className={isDarkMode ? "lobby-info-dark" : "lobby-info"}>
                 <span>
                   {gamesToday[gameLobby.game_number]?.teams.away.team.name !==
                   "Seattle Kraken" ? (
@@ -141,7 +138,9 @@ function GameLobby({ gameLobbies, gamesToday }) {
                   <DotsHorizontalIcon
                     width={28}
                     cursor={"pointer"}
-                    className="lobby-options"
+                    className={
+                      isDarkMode ? "lobby-options-dark" : "lobby-options"
+                    }
                   />
                   <div
                     className="options-wrapper"

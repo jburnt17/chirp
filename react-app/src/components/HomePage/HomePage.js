@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getGames } from "../../store/games";
+import { darkMode, getDarkMode } from "../../store/session";
 import { getTodaysGames } from "../../store/todaysGames";
 import CreateGameLobby from "../CreateGameLobbyForm/CreateGameLobby";
 import GameLobby from "../GameLobby/GameLobby";
@@ -12,6 +13,7 @@ function HomePage({ users }) {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
+  const isDarkMode = useSelector((state) => state.session.darkMode);
 
   const gamesTodayObj = useSelector((state) => state.gamesToday);
   const gamesToday = Object.values(gamesTodayObj);
@@ -23,6 +25,7 @@ function HomePage({ users }) {
     (function () {
       document.documentElement.scrollTop = 0;
     })();
+    dispatch(getDarkMode())
     dispatch(getTodaysGames());
   }, []);
 
@@ -33,26 +36,28 @@ function HomePage({ users }) {
 
   return (
     <div>
-      <div className="home-page-body">
-        <div className="home-page-left">
-          <NavBar />
+      <button onClick={isDarkMode ? () => dispatch(darkMode(false)) : () => dispatch(darkMode(true))}>DARK MODE</button>
+      <div className={isDarkMode ? `home-page-body-dark` : `home-page-body`}>
+        <div className={isDarkMode ? "home-page-left-dark" : "home-page-left"}>
+          <NavBar isDarkMode={isDarkMode}/>
         </div>
         <div className="home-page-middle">
-          <div className="middle-nav">
+          <div className={isDarkMode ? "middle-nav-dark" : "middle-nav"}>
             <div onClick={() => (document.documentElement.scrollTop = 0)}>
               Home
             </div>
           </div>
-          <CreateGameLobby gamesToday={gamesToday} />
+          <CreateGameLobby gamesToday={gamesToday} isDarkMode={isDarkMode}/>
           <GameLobby
-            className="game-lobby"
+            className={isDarkMode ? "game-lobby-dark" : "game-lobby"}
             gameLobbies={gameLobbies}
             gamesToday={gamesToday}
             sessionUser={sessionUser}
+            isDarkMode={isDarkMode}
           />
         </div>
-        <div className="home-page-right">
-          <TodaysGames gamesToday={gamesToday} />
+        <div className={isDarkMode ? "home-page-right-dark" : "home-page-right"}>
+          <TodaysGames gamesToday={gamesToday} isDarkMode={isDarkMode}/>
         </div>
       </div>
     </div>

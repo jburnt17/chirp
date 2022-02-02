@@ -4,14 +4,30 @@
   height: 100vh;
   position: relative;
 }
+.home-page-body-dark {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100vh;
+  position: relative;
+  background-color: #0b1929;
+}
 /* LEFT SIDE */
 .home-page-left {
-  border-right: 1px solid rgba(59, 59, 59, 0.2);
+  border-right: 1px solid rgba(92, 89, 89, 0.2);
   display: flex;
   justify-content: flex-end;
   /* padding: 1rem 2rem; */
   padding: 0rem 3rem;
   z-index: 99;
+}
+.home-page-left-dark {
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: flex-end;
+  /* padding: 1rem 2rem; */
+  padding: 0rem 3rem;
+  z-index: 99;
+  background-color: #0b1929;
 }
 
 /* MIDDLE  */
@@ -26,15 +42,46 @@
   top: 0;
   display: flex;
   align-items: center;
-  z-index: 1;
+  z-index: 2;
+}
+.middle-nav-dark {
+  position: sticky;
+  background-color: #0b1929;
+  opacity: .98;
+  height: 3rem;
+  top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 2;
 }
 .middle-nav > div {
   margin-left: 1rem;
   font-weight: bold;
   cursor: pointer;
 }
+.middle-nav > div {
+  margin-left: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(133, 133, 133);
+}
+.middle-nav-dark > div {
+  margin-left: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.middle-nav-dark > div {
+  margin-left: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(133, 133, 133);
+}
 .game-lobby {
   cursor: pointer;
+}
+.game-lobby-dark {
+  cursor: pointer;
+  background-color: #0b1929;
 }
 
 /* RIGHT SIDE  */
@@ -44,6 +91,14 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
+  z-index: 1;
+}
+.home-page-right-dark {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0b1929;
   z-index: 1;
 }
 @media only screen and (max-width: 1280px) {
