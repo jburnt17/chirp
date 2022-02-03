@@ -10,8 +10,9 @@ export const getTodaysGames = () => async (dispatch) => {
   const offset = date.getTimezoneOffset();
   const newDate = new Date(date.getTime() - offset * 60 * 1000);
   const final = newDate.toISOString().split("T")[0].split("-");
+  console.log(final)
   const response = await fetch(
-    `https://statsapi.web.nhl.com/api/v1/schedule?date=${final[0]}-${final[1]}-${final[2]}`
+    `https://statsapi.web.nhl.com/api/v1/schedule?date=2022-02-01`
   );
   const games = await response.json();
   dispatch(loadGames(games));
