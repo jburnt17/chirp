@@ -19,7 +19,7 @@ function RosterPage() {
 
   const playerStats = async (playerId) => {
     const response = await fetch(
-      `https://cms.nhl.bamgrid.com/images/headshots/current/168x168/${playerId}@2x.jpg`
+      `https://statsapi.web.nhl.com/api/v1/people/${playerId}/stats?stats=statsSingleSeason&season=20212022`
     );
     let info = await response.json();
     info = info?.stats[0]?.splits[0]?.stat;
@@ -91,7 +91,7 @@ function RosterPage() {
                       <img
                         className="player-image"
                         width={48}
-                        src={`http://nhl.bamcontent.com/images/headshots/current/168x168/${player.person.id}.jpg`}
+                        src={`https://cms.nhl.bamgrid.com/images/headshots/current/168x168/${player.person.id}@2x.jpg`}
                       />
                       <p>
                         {player.person.fullName},{" "}
