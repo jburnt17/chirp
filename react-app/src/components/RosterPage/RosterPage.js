@@ -19,7 +19,7 @@ function RosterPage() {
 
   const playerStats = async (playerId) => {
     const response = await fetch(
-      `https://statsapi.web.nhl.com/api/v1/people/${playerId}/stats?stats=statsSingleSeason&season=20212022`
+      `https://cms.nhl.bamgrid.com/images/headshots/current/168x168/${playerId}@2x.jpg`
     );
     let info = await response.json();
     info = info?.stats[0]?.splits[0]?.stat;
