@@ -1,4 +1,4 @@
-import date from "date-and-time";
+import moment from 'moment';
 const ADD_GAME = "games/ADD_GAME";
 const LOAD_GAMES = "games/LOAD_GAMES";
 const DELETE_GAME = "games/DELETE_GAME";
@@ -53,12 +53,7 @@ export const createGame = (game_number) => async (dispatch) => {
 };
 
 const handleTime = (postDate) => {
-  const date1 = new Date(postDate)
-  const date2 = new Date()
-  const hour = new Date(date.subtract(date2, date1).toMilliseconds()).getHours()
-  if (hour >= 24) {
-    return true
-  } return false
+  return moment(postDate).fromNow().split(' ').includes('days' || 'day')
 };
 
 export default function gameReducer(state = {}, action) {
