@@ -23,7 +23,7 @@ import { XCircleIcon } from "@heroicons/react/outline";
 import Test from "../LiveChat/LiveChat";
 import { fetchLikes, removeLike, setLike } from "../../store/likes";
 
-function GameLobbyPage({ users }) {
+function GameLobbyPage() {
   const dispatch = useDispatch();
   const { gameNumber, gameId } = useParams();
   const [content, setContent] = useState("");
@@ -31,15 +31,14 @@ function GameLobbyPage({ users }) {
   const [editChirpId, setEditChirpId] = useState();
   const [showOptions, setShowOptions] = useState(false);
   const [live, setLive] = useState(false);
+  const [users, setUsers] = useState();
 
   const sessionUser = useSelector((state) => state.session.user);
   const gamesTodayObj = useSelector((state) => state.gamesToday);
-  const gameLobbiesObj = useSelector((state) => state.gameLobbies);
   const gameLobbyChirpsObj = useSelector((state) => state.chirps);
   const likesObj = useSelector((state) => state.likes);
 
   const gamesToday = Object.values(gamesTodayObj);
-  const gameLobbies = Object.values(gameLobbiesObj);
   const unfilteredChirps = Object.values(gameLobbyChirpsObj);
   const userLikes = Object.values(likesObj).filter(
     (like) => like.user_id === sessionUser.id
@@ -104,6 +103,12 @@ function GameLobbyPage({ users }) {
     dispatch(getGames());
     dispatch(getTodaysGames());
     dispatch(loadChirps(gameId));
+    async function fetchData() {
+      const response = await fetch("/api/users/");
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -197,9 +202,10 @@ function GameLobbyPage({ users }) {
                     />
                     <div>
                       <p className="chirp-username">
-                        {users &&
-                          users.find((user) => user.id === chirp.user_id)
-                            .username}
+                        {
+                          users?.find((user) => user.id === chirp.user_id)
+                            .username
+                        }
                       </p>
                       <div className="chirp-content">{chirp.content}</div>
                       {!likeCheck(chirp.id) ? (
