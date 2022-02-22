@@ -15,14 +15,14 @@
   <p align="center">
     Chirp is an application where users can create lobbies to view and keep up to date on all the games happening in the NHL. Users also have access to a numerous amount of information such as stats, standings, and all the scores of todays games. Start taking your teams support to the next level and join Chirp.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jburnt17/chirp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://www.chirphockey.herokuapp.com/">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/jburnt17/chirp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/jburnt17/chirp/issues">Request Feature</a>
   </p>
 </div>
 
