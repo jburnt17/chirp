@@ -1,6 +1,62 @@
-# Chirp
+<div align="center">
+<img src="https://img.shields.io/github/commit-activity/y/jburnt17/chirp" />
+<img src="https://img.shields.io/github/last-commit/jburnt17/chirp/main" />
+<img src="https://img.shields.io/github/pipenv/locked/python-version/jburnt17/chirp" />
+<img src="https://img.shields.io/github/pipenv/locked/dependency-version/jburnt17/chirp/flask" />
+<img src="https://img.shields.io/github/languages/count/jburnt17/chirp" />
+<img src="https://img.shields.io/github/languages/code-size/jburnt17/chirp" />
+</div>
 
-Chirp is an application where users can create lobbies to view and keep up to date on all the games happening in the NHL. Users also have access to a numerous amount of information such as stats, standings, and all the scores of todays games. Start taking your teams support to the next level and join Chirp.
+<br />
+<div align="center">
+  <h1>🏒</h1>
+  <h3 align="center">Chirp Hockey</h3>
+
+  <p align="center">
+    Chirp is an application where users can create lobbies to view and keep up to date on all the games happening in the NHL. Users also have access to a numerous amount of information such as stats, standings, and all the scores of todays games. Start taking your teams support to the next level and join Chirp.
+    <br />
+    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    ·
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+  </p>
+</div>
+
+## About The Project
+
+<br />
+<div align="center">
+   <img src="https://jmb-s3-bucket.s3.amazonaws.com/chirp.gif" />
+</div>
+<br />
+
+### Chirp allows users to create lobbies to chat about all things happening in the NHL.
+
+#### Here's some of the key features:
+* Implemented Flask Socket IO’s rooms feature in order to prevent receiving chats from other game lobbies.
+* Utilized the NHL API to send fetch requests and stored the response using Redux, allowing information to be easily accessed across the entire frontend application.
+* Developed application utilizing React components, allowing for reusable, intuitive code and a DRY codebase.
+
+### Built With
+
+This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
+* [Next.js](https://nextjs.org/)
+* [React.js](https://reactjs.org/)
+* [Vue.js](https://vuejs.org/)
+* [Angular](https://angular.io/)
+* [Svelte](https://svelte.dev/)
+* [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+---
 
 ## Getting started
 
