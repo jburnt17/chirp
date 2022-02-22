@@ -41,18 +41,22 @@
 * Utilized the NHL API to send fetch requests and stored the response using Redux, allowing information to be easily accessed across the entire frontend application.
 * Developed application utilizing React components, allowing for reusable, intuitive code and a DRY codebase.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+---
+
+
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [Next.js](https://nextjs.org/)
 * [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [Redux](https://redux.js.org/)
+* [Javascript](https://www.javascript.com/)
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+* [Python](https://www.python.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [HTML]()
+* [CSS]()
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -188,12 +192,3 @@ of your Heroku app in the url and tag name:
    ```bash=3
    docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
    ```
-#### Technologies Used
-1. React
-6. Redux
-4. Javascript
-2. Flask
-7. Python
-8. PostgreSQL
-9. HTML
-10. CSS
