@@ -1,10 +1,10 @@
 <div align="center">
-<img src="https://img.shields.io/github/commit-activity/y/jburnt17/chirp" />
-<img src="https://img.shields.io/github/last-commit/jburnt17/chirp/main" />
-<img src="https://img.shields.io/github/pipenv/locked/python-version/jburnt17/chirp" />
-<img src="https://img.shields.io/github/pipenv/locked/dependency-version/jburnt17/chirp/flask" />
-<img src="https://img.shields.io/github/languages/count/jburnt17/chirp" />
-<img src="https://img.shields.io/github/languages/code-size/jburnt17/chirp" />
+<img src="https://img.shields.io/github/commit-activity/y/jburnt17/chirp?style=for-the-badge" />
+<img src="https://img.shields.io/github/last-commit/jburnt17/chirp/main?style=for-the-badge" />
+<img src="https://img.shields.io/github/pipenv/locked/python-version/jburnt17/chirp?style=for-the-badge" />
+<img src="https://img.shields.io/github/pipenv/locked/dependency-version/jburnt17/chirp/flask?style=for-the-badge" />
+<img src="https://img.shields.io/github/languages/count/jburnt17/chirp?style=for-the-badge" />
+<img src="https://img.shields.io/github/languages/code-size/jburnt17/chirp?style=for-the-badge" />
 </div>
 
 <br />
