@@ -18,7 +18,7 @@
     <a href="https://github.com/jburnt17/chirp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://www.chirphockey.herokuapp.com/">View Demo</a>
+    <a href="https://chirphockey.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/jburnt17/chirp/issues">Report Bug</a>
     ·
