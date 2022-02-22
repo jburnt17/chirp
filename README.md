@@ -54,11 +54,21 @@
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 * [Python](https://www.python.org/)
 * [PostgreSQL](https://www.postgresql.org/)
+* [NHL API](https://github.com/dword4/nhlapi)
 * [HTML]()
 * [CSS]()
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+---
+
+### Contact
+
+<a href="https://www.linkedin.com/in/jared-burnett-36a327225/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=jburnt17@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+<a href="https://github.com/jburnt17/jburnt17"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /></a>
+<a href=""><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" /></a>
 
 ---
 
