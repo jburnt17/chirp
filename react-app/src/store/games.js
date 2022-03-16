@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from "moment";
 const ADD_GAME = "games/ADD_GAME";
 const LOAD_GAMES = "games/LOAD_GAMES";
 const DELETE_GAME = "games/DELETE_GAME";
@@ -53,7 +53,10 @@ export const createGame = (game_number) => async (dispatch) => {
 };
 
 const handleTime = (postDate) => {
-  return moment(postDate).fromNow().split(' ').includes('days' || 'day')
+  return moment(postDate)
+    .fromNow()
+    .split(" ")
+    .includes("days" || "day" || "month" || "months");
 };
 
 export default function gameReducer(state = {}, action) {
@@ -66,8 +69,8 @@ export default function gameReducer(state = {}, action) {
       const newState = { ...state };
       action.payload.games?.forEach((game) => {
         if (handleTime(game.date)) delete newState[game.id];
-        else (newState[game.id] = game)
-      })
+        else newState[game.id] = game;
+      });
       // action.payload.games?.forEach((game) => (newState[game.id] = game));
       return newState;
     }
