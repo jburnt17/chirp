@@ -23,19 +23,7 @@ function GameLobby({ gameLobbies, gamesToday }) {
 
 
   const handleTime = (postDate) => {
-    // // const date1 = new Date(postDate)
-    // const date1 = moment.utc(postDate)._d
-    // const date2 = moment.utc()._d
-    // const difference = new Date(date.subtract(date2, date1).toMilliseconds())
-    // const hour = (moment.utc(difference)._d).getHours()
-    // if (hour === 0) {
-    //   const diffMinutes = new Date(date.subtract(date2, date1).toMilliseconds())
-    //   const minutes = (moment.utc(diffMinutes)._d).getMinutes()
-    //   return minutes + "m";
-    // }
-    // return hour + "h";
     return moment(postDate).fromNow()
-
   };
 
   useEffect(() => {
